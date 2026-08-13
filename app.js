@@ -232,7 +232,10 @@ function showCat(cat, btn) {
 (function () {
   var el = document.getElementById('heroRotate');
   if (!el) return;
-  var phrases = ['For Brands that want more', 'Animated Websites', 'AI-Powered System', 'Digital Experience', 'Premium Branding'];
+  // rotates the tail of a real sentence — the lead-in is static in the markup.
+  // 'Premium Branding' was still in here after Brand was dropped as a service.
+  var phrases = ['animated websites.', 'interactive experiences.', 'custom storefronts.',
+                 'AI agents that actually work.', 'internal tools.'];
   el.textContent = phrases[0];
   if (prefersReduced()) return;
 
