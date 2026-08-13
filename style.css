@@ -473,3 +473,34 @@ footer{border-top:1px solid var(--line);padding:46px max(28px,calc((100vw - 1280
 .cs-next span{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:1.5rem;
   text-transform:uppercase;color:var(--white);line-height:1;}
 .cs-next a:hover span{color:var(--red);}
+
+/* ══════════════════════════════════════════════
+   LANDING PAGES — service, niche and location
+══════════════════════════════════════════════ */
+#lp{padding:140px 0 30px;}
+#lp .lead{font-family:var(--sub);font-weight:300;font-size:clamp(1.05rem,2vw,1.35rem);
+  color:var(--muted);max-width:660px;margin-top:24px;line-height:1.65;}
+.lp-proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:2px;
+  background:var(--line);border:1px solid var(--line);margin:28px 0 10px;}
+.lp-proof a{background:#08080c;padding:0 0 20px;transition:background var(--t2) var(--e);}
+.lp-proof a:hover{background:#0e0e15;}
+.lp-proof img{display:block;width:100%;height:auto;margin-bottom:15px;}
+.lp-proof b{display:block;padding:0 18px;font-family:'Big Shoulders Display',sans-serif;
+  font-weight:900;font-size:1.3rem;line-height:1;text-transform:uppercase;color:var(--white);}
+.lp-proof a:hover b{color:var(--red);}
+.lp-proof span{display:block;padding:7px 18px 0;font-family:'Barlow',sans-serif;
+  font-weight:300;font-size:.85rem;line-height:1.55;color:var(--muted);}
+.lp-faq{margin-top:16px;}
+.lp-faq dt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;
+  letter-spacing:.03em;text-transform:uppercase;color:var(--white);margin-top:26px;}
+.lp-faq dd{font-family:var(--sub);font-weight:300;font-size:1rem;line-height:1.75;
+  color:var(--muted);margin-top:9px;max-width:680px;}
+
+/* footer link columns — how the new pages get discovered from every page */
+.f-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:26px 34px;
+  padding:34px 0 6px;border-top:1px solid var(--line);margin-top:30px;}
+.f-col b{display:block;font-family:'DM Mono',monospace;font-size:var(--label-sm);
+  letter-spacing:.22em;text-transform:uppercase;color:var(--quiet);margin-bottom:12px;}
+.f-col a{display:block;font-family:'Barlow',sans-serif;font-weight:300;font-size:.87rem;
+  color:var(--muted);padding:4px 0;transition:color var(--t1) var(--e);}
+.f-col a:hover{color:var(--red);}

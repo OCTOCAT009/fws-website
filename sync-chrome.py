@@ -40,17 +40,58 @@ FOOTER = '''<footer>
   </div>
 </footer>'''
 
+# Landing pages live only in the footer. It keeps the main nav to six items while
+# still putting every page one click from anywhere, which is what they need to be
+# crawled and to pass link equity.
+FOOTER_COLS = '''<div class="wrap">
+  <div class="f-cols">
+    <div class="f-col"><b>What We Build</b>
+      <a href="animated-websites.html">Animated Websites</a>
+      <a href="interactive-websites.html">Interactive &amp; Immersive</a>
+      <a href="custom-web-development.html">Custom Web Development</a>
+      <a href="services.html">AI Agents &amp; Internal Tools</a>
+    </div>
+    <div class="f-col"><b>Who We Build For</b>
+      <a href="fashion-website-design.html">Fashion &amp; Streetwear</a>
+      <a href="portfolio-website-design.html">Portfolios &amp; Creatives</a>
+      <a href="work.html">All Work</a>
+    </div>
+    <div class="f-col"><b>Case Studies</b>
+      <a href="case-turiya.html">Turiya</a>
+      <a href="case-streeterror.html">Street Error</a>
+      <a href="case-onlyreesh.html">Onlyreesh</a>
+      <a href="case-resentening.html">Resentening</a>
+      <a href="case-chanakya.html">Chanakya FIC</a>
+    </div>
+    <div class="f-col"><b>Where We Work</b>
+      <a href="web-design-india.html">India</a>
+      <a href="web-design-delhi.html">Delhi NCR</a>
+      <a href="web-design-dubai.html">Dubai &amp; UAE</a>
+      <a href="web-design-london.html">London &amp; UK</a>
+      <a href="web-design-new-york.html">New York &amp; US</a>
+    </div>
+  </div>
+</div>
+'''
+
 NAV_RE = re.compile(
     r'<nav id="nav">.*?</nav>\s*<div class="mobile-menu" id="mobileMenu">.*?</div>',
     re.S)
-FOOTER_RE = re.compile(r'<footer>.*?</footer>', re.S)
+# Matches the footer, optionally preceded by an already-injected link-column
+# block, so re-running this script replaces rather than stacks them.
+FOOTER_RE = re.compile(
+    r'(?:<div class="wrap">\s*<div class="f-cols">.*?</div>\s*</div>\s*)?<footer>.*?</footer>',
+    re.S)
 
 
 def nav_for(page):
     """Fill in class="active" for whichever nav item matches this page."""
-    # every blog-*.html article should light up the Journal tab, not nothing
+    # blog-*.html articles light up Journal; case-*.html and the landing pages
+    # light up Work, since that is where they sit in the site's hierarchy
     if page.startswith('blog'):
         page = 'blog'
+    elif page.startswith('case-'):
+        page = 'work'
     out = NAV
     for m in re.findall(r'\{A:([a-z-]+)\}', NAV):
         out = out.replace('{A:%s}' % m, ' class="active"' if m == page else '')
@@ -74,7 +115,7 @@ def main():
 
         # work.html is a full-bleed page with no footer — that's intentional
         if FOOTER_RE.search(out):
-            out = FOOTER_RE.sub(lambda _: FOOTER, out, count=1)
+            out = FOOTER_RE.sub(lambda _: FOOTER_COLS + FOOTER, out, count=1)
 
         if out != src:
             io.open(f, 'w', encoding='utf-8').write(out)
