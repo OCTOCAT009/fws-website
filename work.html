@@ -99,31 +99,6 @@
     gap:12px;padding:180px 18px 40px;}
   #workSpace:not(.floating) .work-card{width:auto;}
 
-  /* CASE MODAL */
-  .case-overlay{position:fixed;inset:0;z-index:3000;background:rgba(4,4,6,.97);overflow-y:auto;opacity:0;pointer-events:none;transition:opacity var(--t3);}
-  .case-overlay.open{opacity:1;pointer-events:all;}
-  .case{max-width:780px;margin:0 auto;padding:90px 28px 70px;transform:translateY(24px) scale(.97);opacity:0;transition:transform var(--t3) var(--e),opacity var(--t3) var(--e);}
-  .case-overlay.open .case{transform:none;opacity:1;}
-  .case-close{position:fixed;top:24px;right:26px;z-index:3001;font-family:'DM Mono',monospace;font-size:var(--label);letter-spacing:.2em;
-    text-transform:uppercase;color:var(--muted);background:none;border:1px solid #222;padding:10px 18px;cursor:pointer;transition:var(--t1);}
-  .case-close:hover{color:var(--white);border-color:var(--white);}
-  .case-eyebrow{font-family:'DM Mono',monospace;font-size:var(--label);letter-spacing:.3em;text-transform:uppercase;color:var(--quiet);margin-bottom:18px;}
-  .case h2{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(2.6rem,8vw,5rem);text-transform:uppercase;line-height:.9;}
-  .case h2 .red{color:var(--red);}
-  .case-sub{font-family:var(--sub);font-weight:300;font-size:1rem;color:var(--muted);margin-top:14px;letter-spacing:.01em;}
-  .case-shot{margin-top:28px;border:1px solid var(--line);overflow:hidden;background:#0a0a0e;}
-  .case-shot img{display:block;width:100%;height:auto;}
-  .case-rule{height:1px;background:#161616;margin:36px 0;}
-  .case-block{margin-bottom:30px;}
-  .case-block h3{font-family:'DM Mono',monospace;font-size:var(--label);letter-spacing:.3em;text-transform:uppercase;color:var(--quiet);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
-  .case-block h3::after{content:'';flex:1;height:1px;background:#161616;}
-  .case-block p{font-weight:300;font-size:1rem;line-height:1.85;color:#9a9aa0;margin-bottom:12px;}
-  .case-block p strong{color:var(--white);font-weight:400;}
-  .case-live{display:inline-flex;align-items:center;gap:12px;margin-top:8px;font-family:'DM Mono',monospace;font-size:var(--label);
-    letter-spacing:.2em;text-transform:uppercase;color:var(--black);background:var(--red);padding:14px 26px;transition:var(--t1);}
-  .case-live:hover{background:var(--red-dark);}
-  .case-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
-  .case-tags span{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid #2a2a2a;padding:7px 12px;}
 </style>
 </head>
 <body>
@@ -162,162 +137,71 @@
   <div id="workSpace">
     <div class="work-card">
       <div class="wc-inner">
-        <button class="wc-open" onclick="openCase('turiya')" aria-label="Open the Turiya case study">
+        <a class="wc-open" href="case-turiya.html" aria-label="Read the Turiya case study">
           <span class="wc-logo cover"><picture>
             <source srcset="shot-turiya.webp" type="image/webp"/>
             <img src="shot-turiya.jpg" alt="The Turiya website — Enter The Fourth State" width="1100" height="688" decoding="async"/>
           </picture></span>
           <span class="wc-bar"><span class="wc-name">Turiya</span><span class="wc-tag">Clothing ’26</span></span>
-        </button>
+        </a>
         <a class="wc-go" href="https://aboutturiya.xyz" target="_blank" rel="noopener noreferrer" aria-label="Visit aboutturiya.xyz — opens in a new tab">↗</a>
       </div>
     </div>
     <div class="work-card">
       <div class="wc-inner">
-        <button class="wc-open" onclick="openCase('streeterror')" aria-label="Open the Street Error case study">
+        <a class="wc-open" href="case-streeterror.html" aria-label="Read the Street Error case study">
           <span class="wc-logo cover"><picture>
             <source srcset="shot-streeterror.webp" type="image/webp"/>
             <img src="shot-streeterror.jpg" alt="The Street Error storefront" width="1100" height="688" decoding="async"/>
           </picture></span>
           <span class="wc-bar"><span class="wc-name">Street Error</span><span class="wc-tag">Shopify ’26</span></span>
-        </button>
+        </a>
         <a class="wc-go" href="https://streeterror.shop" target="_blank" rel="noopener noreferrer" aria-label="Visit streeterror.shop — opens in a new tab">↗</a>
       </div>
     </div>
     <div class="work-card">
       <div class="wc-inner">
-        <button class="wc-open" onclick="openCase('onlyreesh')" aria-label="Open the Onlyreesh case study">
+        <a class="wc-open" href="case-onlyreesh.html" aria-label="Read the Onlyreesh case study">
           <span class="wc-logo cover"><picture>
             <source srcset="shot-reesh.webp" type="image/webp"/>
             <img src="shot-reesh.jpg" alt="The Onlyreesh entry gate" width="1100" height="688" decoding="async"/>
           </picture></span>
           <span class="wc-bar"><span class="wc-name">Onlyreesh</span><span class="wc-tag">Platform ’26</span></span>
-        </button>
+        </a>
         <a class="wc-go" href="https://onlyreesh.com" target="_blank" rel="noopener noreferrer" aria-label="Visit onlyreesh.com — opens in a new tab">↗</a>
       </div>
     </div>
     <div class="work-card">
       <div class="wc-inner">
-        <button class="wc-open" onclick="openCase('resentening')" aria-label="Open the Resentening case study">
+        <a class="wc-open" href="case-resentening.html" aria-label="Read the Resentening case study">
           <span class="wc-logo cover"><picture>
             <source srcset="shot-resentening.webp" type="image/webp"/>
             <img src="shot-resentening.jpg" alt="The Resentening portfolio" width="1100" height="688" decoding="async"/>
           </picture></span>
           <span class="wc-bar"><span class="wc-name">Resentening</span><span class="wc-tag">Portfolio ’26</span></span>
-        </button>
+        </a>
         <a class="wc-go" href="https://resentening.site" target="_blank" rel="noopener noreferrer" aria-label="Visit resentening.site — opens in a new tab">↗</a>
       </div>
     </div>
     <div class="work-card">
       <div class="wc-inner">
-        <button class="wc-open" onclick="openCase('chanakya')" aria-label="Open the Chanakya FIC case study">
+        <a class="wc-open" href="case-chanakya.html" aria-label="Read the Chanakya FIC case study">
           <span class="wc-logo cover"><picture>
             <source srcset="shot-chanakya.webp" type="image/webp"/>
             <img src="shot-chanakya.jpg" alt="The Chanakya FIC financial media platform" width="1100" height="688" decoding="async"/>
           </picture></span>
           <span class="wc-bar"><span class="wc-name">Chanakya FIC</span><span class="wc-tag">Platform ’26</span></span>
-        </button>
+        </a>
         <a class="wc-go" href="https://chanakyafic.in" target="_blank" rel="noopener noreferrer" aria-label="Visit chanakyafic.in — opens in a new tab">↗</a>
       </div>
     </div>
   </div>
 </main>
 
-<!-- CASE: TURIYA -->
-<div class="case-overlay" id="case-turiya">
-  <button class="case-close" onclick="closeCase('turiya')">✕ Close</button>
-  <div class="case">
-    <div class="case-eyebrow">Case Study · Clothing Brand · 2026</div>
-    <h2>Turiya<span class="red">.</span></h2>
-    <div class="case-sub">Enter the fourth state — philosophical streetwear, New Delhi</div>
-    <div class="case-shot"><picture>
-      <source srcset="shot-turiya.webp" type="image/webp"/>
-      <img src="shot-turiya.jpg" alt="The Turiya site — Enter The Fourth State" width="1100" height="688" loading="lazy" decoding="async"/>
-    </picture></div>
-    <div class="case-rule"></div>
-    <div class="case-block"><h3>The Client</h3><p>Turiya is a philosophical streetwear brand built around consciousness — the fourth state of awareness in Vedic philosophy. Not trend-driven. A uniform for a mindset. Founded by <strong>Aish Madaan</strong>, its first drop is a single ungendered leather pant — the first word of a larger language.</p></div>
-    <div class="case-block"><h3>What We Built</h3><p>A full-bleed hero that drops the brand name hard. A product page that presents the leather pant like art, not a listing. A <strong>gamified rituals system</strong> — nine interactive rituals earning Khumari points. Zero templates, every element earning its place.</p></div>
-    <div class="case-block"><h3>Direction</h3><div class="case-tags"><span>Heavy Condensed Type</span><span>Black · Red · Bone</span><span>Full Bleed</span><span>Deliberate Motion</span></div></div>
-    <div class="case-block"><h3>Live</h3><p>Turiya isn't a fashion brand. It's a position.</p><a href="https://aboutturiya.xyz" target="_blank" class="case-live">Visit aboutturiya.xyz ↗</a></div>
-  </div>
-</div>
 
-<!-- CASE: STREET ERROR (NEW) -->
-<div class="case-overlay" id="case-streeterror">
-  <button class="case-close" onclick="closeCase('streeterror')">✕ Close</button>
-  <div class="case">
-    <div class="case-eyebrow">Case Study · Shopify Streetwear · 2026</div>
-    <h2>Street <span class="red">Error.</span></h2>
-    <div class="case-sub">Mumbai streetwear, built on Shopify — with systems no template ships with</div>
-    <div class="case-shot"><picture>
-      <source srcset="shot-streeterror.webp" type="image/webp"/>
-      <img src="shot-streeterror.jpg" alt="The Street Error storefront" width="1100" height="688" loading="lazy" decoding="async"/>
-    </picture></div>
-    <div class="case-rule"></div>
-    <div class="case-block"><h3>The Client</h3><p>Street Error is a Mumbai streetwear label — limited drops, no mass production. "Streets will remember." They needed a store that felt like the brand, not a Shopify template, and operations that actually run.</p></div>
-    <div class="case-block"><h3>What We Built</h3><p>A custom Shopify theme from scratch — a full-screen no-scroll intro, a floating product "space", and a slide-out cart. Then the hard part: a <strong>custom returns &amp; exchange system</strong> with live order verification against real Shopify orders, request tracking IDs, a logging backend, and automated store-credit refunds. Plus <strong>Cash on Delivery done right</strong> with an enforced convenience fee, and full SEO + schema baked in.</p></div>
-    <div class="case-block"><h3>Direction</h3><div class="case-tags"><span>Y2K Display Type</span><span>Black · White</span><span>No-Scroll Intro</span><span>Custom Backend</span><span>Shopify</span></div></div>
-    <div class="case-block"><h3>Live</h3><p>A storefront that sells, and a back office that runs itself.</p><a href="https://streeterror.shop" target="_blank" class="case-live">Visit streeterror.shop ↗</a></div>
-  </div>
-</div>
 
-<!-- CASE: ONLYREESH -->
-<div class="case-overlay" id="case-onlyreesh">
-  <button class="case-close" onclick="closeCase('onlyreesh')">✕ Close</button>
-  <div class="case">
-    <div class="case-eyebrow">Case Study · Artist Platform · 2026</div>
-    <h2>Only<span class="red">.</span>Reesh.</h2>
-    <div class="case-sub">A landing experience for Reesh — independent artist &amp; Bollytekk pioneer</div>
-    <div class="case-shot"><picture>
-      <source srcset="shot-reesh.webp" type="image/webp"/>
-      <img src="shot-reesh.jpg" alt="The Onlyreesh entry gate" width="1100" height="688" loading="lazy" decoding="async"/>
-    </picture></div>
-    <div class="case-rule"></div>
-    <div class="case-block"><h3>The Brief</h3><p>Reesh is an independent singer, composer and producer — founder of <strong>Bollytekk</strong>, a desi-fusion subgenre. The site had to feel like the music: cinematic, spiritual, and built for atmosphere before a single word is read.</p></div>
-    <div class="case-block"><h3>What We Built</h3><p>An immersive entry with a custom WebGL starfield and gate animation, a custom identity system in motion, and a clean discography linking straight to the music. Full atmosphere, zero templates.</p></div>
-    <div class="case-block"><h3>Direction</h3><div class="case-tags"><span>Cinzel · Space Grotesk</span><span>Forest Green · Pearl</span><span>WebGL Space</span><span>Immersive Gate</span></div></div>
-    <div class="case-block"><h3>Live</h3><p>Some sites explain who you are. This one sets a mood.</p><a href="https://onlyreesh.com" target="_blank" class="case-live">Visit onlyreesh.com ↗</a></div>
-  </div>
-</div>
 
-<!-- CASE: RESENTENING -->
-<div class="case-overlay" id="case-resentening">
-  <button class="case-close" onclick="closeCase('resentening')">✕ Close</button>
-  <div class="case">
-    <div class="case-eyebrow">Case Study · Designer Portfolio · 2026</div>
-    <h2>Resente<span class="red">-</span>ning.</h2>
-    <div class="case-sub">Aish Madaan — graphic designer, brand architect &amp; visual provocateur · New Delhi</div>
-    <div class="case-shot"><picture>
-      <source srcset="shot-resentening.webp" type="image/webp"/>
-      <img src="shot-resentening.jpg" alt="The Resentening portfolio" width="1100" height="688" loading="lazy" decoding="async"/>
-    </picture></div>
-    <div class="case-rule"></div>
-    <div class="case-block"><h3>The Client</h3><p>Aish Madaan operates at the intersection of fashion, music and visual culture. <strong>Not a standard portfolio. A world.</strong></p></div>
-    <div class="case-block"><h3>What We Built</h3><p>An entry gate — five questions about underground music culture; answer wrong, you don't get in. Behind it, a full portfolio system: eight case studies across brand identity, 3D, album covers and editorial. Built to disrupt, not follow.</p></div>
-    <div class="case-block"><h3>Direction</h3><div class="case-tags"><span>Provocative Type</span><span>Gated Entry</span><span>Editorial</span><span>Not For Everyone</span></div></div>
-    <div class="case-block"><h3>Live</h3><p>This page is not for everyone.</p><a href="https://resentening.site" target="_blank" class="case-live">Visit resentening.site ↗</a></div>
-  </div>
-</div>
 
-<!-- CASE: CHANAKYA FIC -->
-<div class="case-overlay" id="case-chanakya">
-  <button class="case-close" onclick="closeCase('chanakya')">✕ Close</button>
-  <div class="case">
-    <div class="case-eyebrow">Case Study · Financial Media Platform · 2026</div>
-    <h2>Chanakya<span class="red">.</span></h2>
-    <div class="case-sub">Finance &amp; Investment Cell, Dr. B.R. Ambedkar College — University of Delhi</div>
-    <div class="case-shot"><picture>
-      <source srcset="shot-chanakya.webp" type="image/webp"/>
-      <img src="shot-chanakya.jpg" alt="The Chanakya FIC platform" width="1100" height="688" loading="lazy" decoding="async"/>
-    </picture></div>
-    <div class="case-rule"></div>
-    <div class="case-block"><h3>The Client</h3><p>Chanakya is the Finance &amp; Investment Cell at Dr. B.R. Ambedkar College, DU — a student society publishing real research on markets, policy and the economy. They were running on a drag-and-drop site builder that could hold pages but nothing else: no way to publish a paper properly, no mailing list of their own, and <strong>no way to know if anyone was reading.</strong></p></div>
-    <div class="case-block"><h3>What We Built</h3><p>A full rebuild as a <strong>financial media platform</strong>, styled like a terminal rather than a college microsite — deep navy and ink, cyan accents, up/down red-green, and a market ticker running across every page. Eleven publications with their own covers and downloadable PDFs, plus sections for the team, events and their FinLit initiative.</p><p>Underneath it, the part that actually mattered: a <strong>mail system and admin portal</strong> the committee runs themselves. Five tabs — subscribers, per-publication download counts, first-party traffic, a composer, and full send history.</p></div>
-    <div class="case-block"><h3>The Hard Part</h3><p>Sending mail properly is where these projects usually fail. Every recipient gets an individually addressed message with its own one-click unsubscribe header — <strong>no BCC anywhere</strong>, which is most of why it lands in inboxes. Sends run in batches of twelve through a self-reinvoking worker, so list length never touches a timeout, and a daily cap parks the job and resumes it the next morning on its own.</p><p>Press send twice and it refuses: campaigns are fingerprinted for 24 hours, with an explicit override if a resend is genuinely intended. Analytics are first-party counts only — <strong>no identifiers, no cookie banner</strong> — and the whole thing ships under a DPDP Act 2023 notice with a 23-test end-to-end suite behind it.</p></div>
-    <div class="case-block"><h3>Direction</h3><div class="case-tags"><span>Terminal Aesthetic</span><span>Ink · Navy · Aqua</span><span>Market Ticker</span><span>Serverless Functions</span><span>Self-Serve Portal</span><span>DPDP Compliant</span></div></div>
-    <div class="case-block"><h3>Live</h3><p>The list lives on their own site — it doesn't walk out of the door when the committee changes.</p><a href="https://chanakyafic.in" target="_blank" rel="noopener noreferrer" class="case-live">Visit chanakyafic.in ↗</a></div>
-  </div>
-</div>
 
 <script src="app.js"></script>
 </body>

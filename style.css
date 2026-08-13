@@ -443,3 +443,33 @@ footer{border-top:1px solid var(--line);padding:46px max(28px,calc((100vw - 1280
 .post-cta b{display:block;font-family:'Big Shoulders Display',sans-serif;font-weight:900;
   font-size:1.7rem;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:10px;}
 .post-cta p{font-family:var(--sub);font-weight:300;font-size:.95rem;color:var(--muted);line-height:1.65;margin-bottom:20px;}
+
+/* ══════════════════════════════════════════════
+   CASE STUDY PAGES — real URLs, replacing the old modals
+══════════════════════════════════════════════ */
+#case-page{padding:140px 0 30px;}
+.cs-shot{margin:30px 0 6px;border:1px solid var(--line);overflow:hidden;background:#0a0a0e;}
+.cs-shot img{display:block;width:100%;height:auto;}
+.cs-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;
+  background:var(--line);border:1px solid var(--line);margin:30px 0 10px;}
+.cs-fact{background:#08080c;padding:20px 22px;}
+.cs-fact b{display:block;font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--quiet);margin-bottom:8px;}
+.cs-fact span{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--white);}
+.cs-tags{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0;}
+.cs-tags span{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--quiet);border:1px solid var(--line);padding:8px 13px;}
+.cs-live{display:inline-flex;align-items:center;gap:12px;margin-top:20px;font-family:'DM Mono',monospace;
+  font-size:var(--label);letter-spacing:.2em;text-transform:uppercase;color:var(--black);
+  background:var(--red);padding:15px 27px;transition:background var(--t1) var(--e),transform var(--t1) var(--e);}
+.cs-live:hover{background:var(--red-dark);transform:translateY(-2px);}
+.cs-next{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;
+  background:var(--line);border:1px solid var(--line);margin:64px 0 0;}
+.cs-next a{background:#08080c;padding:26px 24px;transition:background var(--t2) var(--e);}
+.cs-next a:hover{background:#0e0e15;}
+.cs-next b{display:block;font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--quiet);margin-bottom:9px;}
+.cs-next span{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:1.5rem;
+  text-transform:uppercase;color:var(--white);line-height:1;}
+.cs-next a:hover span{color:var(--red);}

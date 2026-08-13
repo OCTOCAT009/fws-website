@@ -144,9 +144,11 @@ var fwTrack = function () {};
     a.addEventListener('click', function () { setOpen(false); });
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && menu.classList.contains('open')) {
-      setOpen(false); burger.focus();
-    }
+    if (!menu.classList.contains('open')) return;
+    if (e.key === 'Escape') { setOpen(false); burger.focus(); }
+    // the menu covers the whole viewport and locks body scroll, so Tab must not
+    // wander into the page behind it
+    else if (e.key === 'Tab') fwTrapFocus(menu, e);
   });
 })();
 
@@ -288,7 +290,7 @@ function showCat(cat, btn) {
   }, { passive: true });
 })();
 
-/* ── FOCUS TRAP helper (shared by the case modals) ── */
+/* ── FOCUS TRAP helper (mobile menu) ── */
 function fwTrapFocus(container, e) {
   var f = container.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
   if (!f.length) return;
@@ -297,7 +299,7 @@ function fwTrapFocus(container, e) {
   else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
 }
 
-/* ── WORK: floating drifting cards + modals ── */
+/* ── WORK: floating drifting cards ── */
 (function () {
   var space = document.getElementById('workSpace');
   if (!space) return;
@@ -405,47 +407,14 @@ function fwTrapFocus(container, e) {
 
   space.classList.add('floating'); init(); window.addEventListener('resize', init);
 
-  // modals
-  var lastFocus = null;
-  window.openCase = function (id) {
-    var m = document.getElementById('case-' + id);
-    if (!m) return;
-    lastFocus = document.activeElement;
-    m.classList.add('open');
-    m.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    var close = m.querySelector('.case-close');
-    if (close) close.focus();
-    fwTrack('case_open', { project: id });
-  };
-  window.closeCase = function (id) {
-    var m = document.getElementById('case-' + id);
-    if (!m) return;
-    m.classList.remove('open');
-    m.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
-  };
-  function closeAll() {
-    document.querySelectorAll('.case-overlay.open').forEach(function (m) {
-      m.classList.remove('open'); m.setAttribute('aria-hidden', 'true');
+  // Case studies used to open in modals here. They are real pages now
+  // (case-*.html) so the cards are plain links — better for search, and the
+  // modal copy would otherwise duplicate the page copy word for word.
+  cards.forEach(function (el) {
+    var a = el.querySelector('.wc-open');
+    if (a) a.addEventListener('click', function () {
+      fwTrack('case_open', { project: (a.getAttribute('href') || '').replace(/^case-|\.html$/g, '') });
     });
-    document.body.style.overflow = '';
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-  document.querySelectorAll('.case-overlay').forEach(function (m) {
-    m.setAttribute('role', 'dialog');
-    m.setAttribute('aria-modal', 'true');
-    m.setAttribute('aria-hidden', 'true');
-    var h = m.querySelector('h2');
-    if (h) { if (!h.id) h.id = m.id + '-title'; m.setAttribute('aria-labelledby', h.id); }
-    m.addEventListener('click', function (e) { if (e.target === m) closeAll(); });
-  });
-  document.addEventListener('keydown', function (e) {
-    var open = document.querySelector('.case-overlay.open');
-    if (!open) return;
-    if (e.key === 'Escape') closeAll();
-    else if (e.key === 'Tab') fwTrapFocus(open, e);
   });
 })();
 
