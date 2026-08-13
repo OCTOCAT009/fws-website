@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="apple-touch-icon" href="favicon.png"/>
+<title>Our Work — Case Studies | Forth Worth Studios</title>
+<meta name="description" content="Selected work from Forth Worth Studios — custom websites, Shopify stores and digital experiences for Turiya, Street Error, Onlyreesh, Resentening and Chanakya FIC. Built from a blank canvas."/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
+<link rel="canonical" href="https://forthworthstudios.space/work.html"/>
+<meta name="theme-color" content="#050508"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Forth Worth Studios"/>
+<meta property="og:title" content="Our Work — Forth Worth Studios"/>
+<meta property="og:description" content="Custom websites & digital experiences: Turiya, Street Error, Onlyreesh, Resentening, Chanakya FIC."/>
+<meta property="og:url" content="https://forthworthstudios.space/work.html"/>
+<meta property="og:image" content="https://forthworthstudios.space/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://forthworthstudios.space/og-image.png"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://forthworthstudios.space/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://forthworthstudios.space/work.html"}]}
+</script>
+<!-- fonts are self-hosted in style.css; preload only the two that paint first -->
+<link rel="preload" as="font" type="font/woff2" href="fonts/BigShouldersDisplay-900-normal-latin.woff2" crossorigin/>
+<link rel="preload" as="font" type="font/woff2" href="fonts/Barlow-400-normal-latin.woff2" crossorigin/>
+<link rel="preload" as="image" href="poster-work.webp" fetchpriority="high"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  html,body{height:100%;overflow:hidden;}
+  #work{position:fixed;inset:0;overflow:hidden;}
+  #work-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.32) saturate(1.1);z-index:0;}
+  #work-shade{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 70% 70% at 50% 45%,transparent,rgba(5,5,8,.7));}
+  .work-head{position:absolute;top:96px;left:0;right:0;text-align:center;z-index:3;pointer-events:none;padding:0 20px;}
+  .work-head .eyebrow{justify-content:center;}
+  .work-head h1{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(2.2rem,5vw,4rem);text-transform:uppercase;line-height:.95;}
+  .work-head h1 .red{color:var(--red);}
+  .work-head p{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:12px;}
+
+  #workSpace{position:absolute;inset:0;z-index:2;}
+  .work-card{cursor:pointer;user-select:none;will-change:transform;}
+  #workSpace.floating .work-card{position:absolute;top:0;left:0;width:260px;}
+  @media(max-width:768px){
+    #workSpace.floating .work-card{width:160px;}
+    #workSpace.floating .wc-logo:not(.cover){padding:16px;}
+    #workSpace.floating .wc-bar{padding:9px 11px;}
+    #workSpace.floating .wc-name{font-size:.72rem;}
+  }
+  .wc-inner{position:relative;background:rgba(8,8,12,.72);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(6px);
+    transition:border-color var(--t2),box-shadow var(--t2),transform var(--t2);overflow:hidden;}
+  .work-card:hover .wc-inner,.work-card:focus-within .wc-inner{border-color:var(--red);box-shadow:0 0 34px rgba(204,42,30,.3);transform:scale(1.05);}
+
+  /* the whole card is one button — a drifting target needs the biggest hit area we can give it */
+  .wc-open{display:block;width:100%;padding:0;border:none;background:none;color:inherit;font:inherit;
+    text-align:left;cursor:pointer;}
+  .wc-open:focus-visible{outline:2px solid var(--red);outline-offset:-3px;}
+  /* the live-site link is a sibling, never nested inside the button — role=button
+     may not contain focusable descendants */
+  .wc-go{position:absolute;top:8px;right:8px;z-index:6;width:38px;height:38px;
+    display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1rem;
+    background:rgba(5,5,8,.82);border:1px solid rgba(255,255,255,.2);color:var(--white);
+    backdrop-filter:blur(4px);transition:background var(--t1),border-color var(--t1),transform var(--t1),color var(--t1);}
+  .wc-go:hover{background:var(--red);border-color:var(--red);color:var(--black);transform:translateY(-2px);}
+  .wc-go:focus-visible{outline:2px solid var(--white);outline-offset:2px;}
+  /* 16:10 — these are browser screenshots now, and a square crop destroys them */
+  .wc-logo{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;padding:30px;background:#0a0a0e;overflow:hidden;}
+  .wc-logo img{width:100%;height:100%;object-fit:contain;}
+  .wc-logo.cover{padding:0;position:relative;overflow:hidden;}
+  .wc-logo.cover img{object-fit:cover;width:100%;height:100%;transform:scale(1.02);
+    transition:filter var(--t3) var(--e),transform var(--t3) var(--e);}
+  /* ── CINEMATIC HOVER PREVIEW (the shot comes alive on focus, YouTube-style) ── */
+  .work-card:hover .wc-logo.cover img{animation:wcKenburns 14s ease-in-out infinite;
+    filter:saturate(1.12) contrast(1.05) brightness(1.06);}
+  @keyframes wcKenburns{
+    0%  {transform:scale(1.06) translate(0,0);}
+    25% {transform:scale(1.16) translate(-2.5%,-2%);}
+    50% {transform:scale(1.2)  translate(1.5%,-3%);}
+    75% {transform:scale(1.14) translate(2%,1.5%);}
+    100%{transform:scale(1.06) translate(0,0);}
+  }
+  /* focus vignette */
+  .wc-logo.cover::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity var(--t3) var(--e);
+    background:radial-gradient(120% 120% at 50% 40%,transparent 55%,rgba(0,0,0,.5) 100%);}
+  .work-card:hover .wc-logo.cover::after{opacity:1;}
+  /* "PREVIEW" chip */
+  .wc-logo.cover::before{content:'● PREVIEW';position:absolute;top:10px;left:10px;z-index:2;
+    font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.18em;color:var(--white);
+    background:rgba(204,42,30,.92);padding:5px 8px;opacity:0;transform:translateY(-4px);
+    transition:opacity var(--t2) var(--e),transform var(--t2) var(--e);}
+  .work-card:hover .wc-logo.cover::before{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){ .work-card:hover .wc-logo.cover img{animation:none;transform:scale(1.1);} }
+  .wc-ph{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white);text-align:center;line-height:1;}
+  .wc-bar{padding:12px 14px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;}
+  .wc-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--white);}
+  .wc-tag{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.16em;text-transform:uppercase;color:var(--quiet);}
+
+  /* stacked grid on mobile */
+  #workSpace:not(.floating){position:absolute;inset:0;z-index:2;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;
+    gap:12px;padding:180px 18px 40px;}
+  #workSpace:not(.floating) .work-card{width:auto;}
+
+  /* CASE MODAL */
+  .case-overlay{position:fixed;inset:0;z-index:3000;background:rgba(4,4,6,.97);overflow-y:auto;opacity:0;pointer-events:none;transition:opacity var(--t3);}
+  .case-overlay.open{opacity:1;pointer-events:all;}
+  .case{max-width:780px;margin:0 auto;padding:90px 28px 70px;transform:translateY(24px) scale(.97);opacity:0;transition:transform var(--t3) var(--e),opacity var(--t3) var(--e);}
+  .case-overlay.open .case{transform:none;opacity:1;}
+  .case-close{position:fixed;top:24px;right:26px;z-index:3001;font-family:'DM Mono',monospace;font-size:var(--label);letter-spacing:.2em;
+    text-transform:uppercase;color:var(--muted);background:none;border:1px solid #222;padding:10px 18px;cursor:pointer;transition:var(--t1);}
+  .case-close:hover{color:var(--white);border-color:var(--white);}
+  .case-eyebrow{font-family:'DM Mono',monospace;font-size:var(--label);letter-spacing:.3em;text-transform:uppercase;color:var(--quiet);margin-bottom:18px;}
+  .case h2{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(2.6rem,8vw,5rem);text-transform:uppercase;line-height:.9;}
+  .case h2 .red{color:var(--red);}
+  .case-sub{font-family:var(--sub);font-weight:300;font-size:1rem;color:var(--muted);margin-top:14px;letter-spacing:.01em;}
+  .case-shot{margin-top:28px;border:1px solid var(--line);overflow:hidden;background:#0a0a0e;}
+  .case-shot img{display:block;width:100%;height:auto;}
+  .case-rule{height:1px;background:#161616;margin:36px 0;}
+  .case-block{margin-bottom:30px;}
+  .case-block h3{font-family:'DM Mono',monospace;font-size:var(--label);letter-spacing:.3em;text-transform:uppercase;color:var(--quiet);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+  .case-block h3::after{content:'';flex:1;height:1px;background:#161616;}
+  .case-block p{font-weight:300;font-size:1rem;line-height:1.85;color:#9a9aa0;margin-bottom:12px;}
+  .case-block p strong{color:var(--white);font-weight:400;}
+  .case-live{display:inline-flex;align-items:center;gap:12px;margin-top:8px;font-family:'DM Mono',monospace;font-size:var(--label);
+    letter-spacing:.2em;text-transform:uppercase;color:var(--black);background:var(--red);padding:14px 26px;transition:var(--t1);}
+  .case-live:hover{background:var(--red-dark);}
+  .case-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .case-tags span{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid #2a2a2a;padding:7px 12px;}
+</style>
+</head>
+<body>
+
+<a href="#work" class="skip">Skip to content</a>
+
+<div id="loader"><div class="lname">Forth<span style="color:#000">.</span>Worth</div><video src="loader.mp4" muted playsinline autoplay loop></video><div class="lz">Loading</div></div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="Forth Worth Studios — Home"><img src="logo.png" alt="Forth Worth Studios" width="383" height="204"/></a>
+  <div class="nav-links">
+    <a href="work.html" class="active">Work</a>
+    <a href="services.html">Services</a>
+    <a href="why-forthworth.html">Why ForthWorth</a>
+    <a href="about.html">About</a>
+    <a href="blog.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Let's Build</a>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="blog.html">Journal</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<main id="work">
+  <video id="work-vid" src="work-bg.mp4" poster="poster-work.webp" autoplay muted loop playsinline preload="auto"></video>
+  <div id="work-shade"></div>
+  <div class="work-head">
+    <div class="eyebrow">Selected Work</div>
+    <h1>What We've <span class="red">Built.</span></h1>
+    <p>Tap a project · drag your eyes · they drift</p>
+  </div>
+
+  <div id="workSpace">
+    <div class="work-card">
+      <div class="wc-inner">
+        <button class="wc-open" onclick="openCase('turiya')" aria-label="Open the Turiya case study">
+          <span class="wc-logo cover"><picture>
+            <source srcset="shot-turiya.webp" type="image/webp"/>
+            <img src="shot-turiya.jpg" alt="The Turiya website — Enter The Fourth State" width="1100" height="688" decoding="async"/>
+          </picture></span>
+          <span class="wc-bar"><span class="wc-name">Turiya</span><span class="wc-tag">Clothing ’26</span></span>
+        </button>
+        <a class="wc-go" href="https://aboutturiya.xyz" target="_blank" rel="noopener noreferrer" aria-label="Visit aboutturiya.xyz — opens in a new tab">↗</a>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="wc-inner">
+        <button class="wc-open" onclick="openCase('streeterror')" aria-label="Open the Street Error case study">
+          <span class="wc-logo cover"><picture>
+            <source srcset="shot-streeterror.webp" type="image/webp"/>
+            <img src="shot-streeterror.jpg" alt="The Street Error storefront" width="1100" height="688" decoding="async"/>
+          </picture></span>
+          <span class="wc-bar"><span class="wc-name">Street Error</span><span class="wc-tag">Shopify ’26</span></span>
+        </button>
+        <a class="wc-go" href="https://streeterror.shop" target="_blank" rel="noopener noreferrer" aria-label="Visit streeterror.shop — opens in a new tab">↗</a>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="wc-inner">
+        <button class="wc-open" onclick="openCase('onlyreesh')" aria-label="Open the Onlyreesh case study">
+          <span class="wc-logo cover"><picture>
+            <source srcset="shot-reesh.webp" type="image/webp"/>
+            <img src="shot-reesh.jpg" alt="The Onlyreesh entry gate" width="1100" height="688" decoding="async"/>
+          </picture></span>
+          <span class="wc-bar"><span class="wc-name">Onlyreesh</span><span class="wc-tag">Platform ’26</span></span>
+        </button>
+        <a class="wc-go" href="https://onlyreesh.com" target="_blank" rel="noopener noreferrer" aria-label="Visit onlyreesh.com — opens in a new tab">↗</a>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="wc-inner">
+        <button class="wc-open" onclick="openCase('resentening')" aria-label="Open the Resentening case study">
+          <span class="wc-logo cover"><picture>
+            <source srcset="shot-resentening.webp" type="image/webp"/>
+            <img src="shot-resentening.jpg" alt="The Resentening portfolio" width="1100" height="688" decoding="async"/>
+          </picture></span>
+          <span class="wc-bar"><span class="wc-name">Resentening</span><span class="wc-tag">Portfolio ’26</span></span>
+        </button>
+        <a class="wc-go" href="https://resentening.site" target="_blank" rel="noopener noreferrer" aria-label="Visit resentening.site — opens in a new tab">↗</a>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="wc-inner">
+        <button class="wc-open" onclick="openCase('chanakya')" aria-label="Open the Chanakya FIC case study">
+          <span class="wc-logo cover"><picture>
+            <source srcset="shot-chanakya.webp" type="image/webp"/>
+            <img src="shot-chanakya.jpg" alt="The Chanakya FIC financial media platform" width="1100" height="688" decoding="async"/>
+          </picture></span>
+          <span class="wc-bar"><span class="wc-name">Chanakya FIC</span><span class="wc-tag">Platform ’26</span></span>
+        </button>
+        <a class="wc-go" href="https://chanakyafic.in" target="_blank" rel="noopener noreferrer" aria-label="Visit chanakyafic.in — opens in a new tab">↗</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- CASE: TURIYA -->
+<div class="case-overlay" id="case-turiya">
+  <button class="case-close" onclick="closeCase('turiya')">✕ Close</button>
+  <div class="case">
+    <div class="case-eyebrow">Case Study · Clothing Brand · 2026</div>
+    <h2>Turiya<span class="red">.</span></h2>
+    <div class="case-sub">Enter the fourth state — philosophical streetwear, New Delhi</div>
+    <div class="case-shot"><picture>
+      <source srcset="shot-turiya.webp" type="image/webp"/>
+      <img src="shot-turiya.jpg" alt="The Turiya site — Enter The Fourth State" width="1100" height="688" loading="lazy" decoding="async"/>
+    </picture></div>
+    <div class="case-rule"></div>
+    <div class="case-block"><h3>The Client</h3><p>Turiya is a philosophical streetwear brand built around consciousness — the fourth state of awareness in Vedic philosophy. Not trend-driven. A uniform for a mindset. Founded by <strong>Aish Madaan</strong>, its first drop is a single ungendered leather pant — the first word of a larger language.</p></div>
+    <div class="case-block"><h3>What We Built</h3><p>A full-bleed hero that drops the brand name hard. A product page that presents the leather pant like art, not a listing. A <strong>gamified rituals system</strong> — nine interactive rituals earning Khumari points. Zero templates, every element earning its place.</p></div>
+    <div class="case-block"><h3>Direction</h3><div class="case-tags"><span>Heavy Condensed Type</span><span>Black · Red · Bone</span><span>Full Bleed</span><span>Deliberate Motion</span></div></div>
+    <div class="case-block"><h3>Live</h3><p>Turiya isn't a fashion brand. It's a position.</p><a href="https://aboutturiya.xyz" target="_blank" class="case-live">Visit aboutturiya.xyz ↗</a></div>
+  </div>
+</div>
+
+<!-- CASE: STREET ERROR (NEW) -->
+<div class="case-overlay" id="case-streeterror">
+  <button class="case-close" onclick="closeCase('streeterror')">✕ Close</button>
+  <div class="case">
+    <div class="case-eyebrow">Case Study · Shopify Streetwear · 2026</div>
+    <h2>Street <span class="red">Error.</span></h2>
+    <div class="case-sub">Mumbai streetwear, built on Shopify — with systems no template ships with</div>
+    <div class="case-shot"><picture>
+      <source srcset="shot-streeterror.webp" type="image/webp"/>
+      <img src="shot-streeterror.jpg" alt="The Street Error storefront" width="1100" height="688" loading="lazy" decoding="async"/>
+    </picture></div>
+    <div class="case-rule"></div>
+    <div class="case-block"><h3>The Client</h3><p>Street Error is a Mumbai streetwear label — limited drops, no mass production. "Streets will remember." They needed a store that felt like the brand, not a Shopify template, and operations that actually run.</p></div>
+    <div class="case-block"><h3>What We Built</h3><p>A custom Shopify theme from scratch — a full-screen no-scroll intro, a floating product "space", and a slide-out cart. Then the hard part: a <strong>custom returns &amp; exchange system</strong> with live order verification against real Shopify orders, request tracking IDs, a logging backend, and automated store-credit refunds. Plus <strong>Cash on Delivery done right</strong> with an enforced convenience fee, and full SEO + schema baked in.</p></div>
+    <div class="case-block"><h3>Direction</h3><div class="case-tags"><span>Y2K Display Type</span><span>Black · White</span><span>No-Scroll Intro</span><span>Custom Backend</span><span>Shopify</span></div></div>
+    <div class="case-block"><h3>Live</h3><p>A storefront that sells, and a back office that runs itself.</p><a href="https://streeterror.shop" target="_blank" class="case-live">Visit streeterror.shop ↗</a></div>
+  </div>
+</div>
+
+<!-- CASE: ONLYREESH -->
+<div class="case-overlay" id="case-onlyreesh">
+  <button class="case-close" onclick="closeCase('onlyreesh')">✕ Close</button>
+  <div class="case">
+    <div class="case-eyebrow">Case Study · Artist Platform · 2026</div>
+    <h2>Only<span class="red">.</span>Reesh.</h2>
+    <div class="case-sub">A landing experience for Reesh — independent artist &amp; Bollytekk pioneer</div>
+    <div class="case-shot"><picture>
+      <source srcset="shot-reesh.webp" type="image/webp"/>
+      <img src="shot-reesh.jpg" alt="The Onlyreesh entry gate" width="1100" height="688" loading="lazy" decoding="async"/>
+    </picture></div>
+    <div class="case-rule"></div>
+    <div class="case-block"><h3>The Brief</h3><p>Reesh is an independent singer, composer and producer — founder of <strong>Bollytekk</strong>, a desi-fusion subgenre. The site had to feel like the music: cinematic, spiritual, and built for atmosphere before a single word is read.</p></div>
+    <div class="case-block"><h3>What We Built</h3><p>An immersive entry with a custom WebGL starfield and gate animation, a custom identity system in motion, and a clean discography linking straight to the music. Full atmosphere, zero templates.</p></div>
+    <div class="case-block"><h3>Direction</h3><div class="case-tags"><span>Cinzel · Space Grotesk</span><span>Forest Green · Pearl</span><span>WebGL Space</span><span>Immersive Gate</span></div></div>
+    <div class="case-block"><h3>Live</h3><p>Some sites explain who you are. This one sets a mood.</p><a href="https://onlyreesh.com" target="_blank" class="case-live">Visit onlyreesh.com ↗</a></div>
+  </div>
+</div>
+
+<!-- CASE: RESENTENING -->
+<div class="case-overlay" id="case-resentening">
+  <button class="case-close" onclick="closeCase('resentening')">✕ Close</button>
+  <div class="case">
+    <div class="case-eyebrow">Case Study · Designer Portfolio · 2026</div>
+    <h2>Resente<span class="red">-</span>ning.</h2>
+    <div class="case-sub">Aish Madaan — graphic designer, brand architect &amp; visual provocateur · New Delhi</div>
+    <div class="case-shot"><picture>
+      <source srcset="shot-resentening.webp" type="image/webp"/>
+      <img src="shot-resentening.jpg" alt="The Resentening portfolio" width="1100" height="688" loading="lazy" decoding="async"/>
+    </picture></div>
+    <div class="case-rule"></div>
+    <div class="case-block"><h3>The Client</h3><p>Aish Madaan operates at the intersection of fashion, music and visual culture. <strong>Not a standard portfolio. A world.</strong></p></div>
+    <div class="case-block"><h3>What We Built</h3><p>An entry gate — five questions about underground music culture; answer wrong, you don't get in. Behind it, a full portfolio system: eight case studies across brand identity, 3D, album covers and editorial. Built to disrupt, not follow.</p></div>
+    <div class="case-block"><h3>Direction</h3><div class="case-tags"><span>Provocative Type</span><span>Gated Entry</span><span>Editorial</span><span>Not For Everyone</span></div></div>
+    <div class="case-block"><h3>Live</h3><p>This page is not for everyone.</p><a href="https://resentening.site" target="_blank" class="case-live">Visit resentening.site ↗</a></div>
+  </div>
+</div>
+
+<!-- CASE: CHANAKYA FIC -->
+<div class="case-overlay" id="case-chanakya">
+  <button class="case-close" onclick="closeCase('chanakya')">✕ Close</button>
+  <div class="case">
+    <div class="case-eyebrow">Case Study · Financial Media Platform · 2026</div>
+    <h2>Chanakya<span class="red">.</span></h2>
+    <div class="case-sub">Finance &amp; Investment Cell, Dr. B.R. Ambedkar College — University of Delhi</div>
+    <div class="case-shot"><picture>
+      <source srcset="shot-chanakya.webp" type="image/webp"/>
+      <img src="shot-chanakya.jpg" alt="The Chanakya FIC platform" width="1100" height="688" loading="lazy" decoding="async"/>
+    </picture></div>
+    <div class="case-rule"></div>
+    <div class="case-block"><h3>The Client</h3><p>Chanakya is the Finance &amp; Investment Cell at Dr. B.R. Ambedkar College, DU — a student society publishing real research on markets, policy and the economy. They were running on a drag-and-drop site builder that could hold pages but nothing else: no way to publish a paper properly, no mailing list of their own, and <strong>no way to know if anyone was reading.</strong></p></div>
+    <div class="case-block"><h3>What We Built</h3><p>A full rebuild as a <strong>financial media platform</strong>, styled like a terminal rather than a college microsite — deep navy and ink, cyan accents, up/down red-green, and a market ticker running across every page. Eleven publications with their own covers and downloadable PDFs, plus sections for the team, events and their FinLit initiative.</p><p>Underneath it, the part that actually mattered: a <strong>mail system and admin portal</strong> the committee runs themselves. Five tabs — subscribers, per-publication download counts, first-party traffic, a composer, and full send history.</p></div>
+    <div class="case-block"><h3>The Hard Part</h3><p>Sending mail properly is where these projects usually fail. Every recipient gets an individually addressed message with its own one-click unsubscribe header — <strong>no BCC anywhere</strong>, which is most of why it lands in inboxes. Sends run in batches of twelve through a self-reinvoking worker, so list length never touches a timeout, and a daily cap parks the job and resumes it the next morning on its own.</p><p>Press send twice and it refuses: campaigns are fingerprinted for 24 hours, with an explicit override if a resend is genuinely intended. Analytics are first-party counts only — <strong>no identifiers, no cookie banner</strong> — and the whole thing ships under a DPDP Act 2023 notice with a 23-test end-to-end suite behind it.</p></div>
+    <div class="case-block"><h3>Direction</h3><div class="case-tags"><span>Terminal Aesthetic</span><span>Ink · Navy · Aqua</span><span>Market Ticker</span><span>Serverless Functions</span><span>Self-Serve Portal</span><span>DPDP Compliant</span></div></div>
+    <div class="case-block"><h3>Live</h3><p>The list lives on their own site — it doesn't walk out of the door when the committee changes.</p><a href="https://chanakyafic.in" target="_blank" rel="noopener noreferrer" class="case-live">Visit chanakyafic.in ↗</a></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

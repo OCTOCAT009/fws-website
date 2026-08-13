@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="apple-touch-icon" href="favicon.png"/>
+<title>Contact — Start a Project | Forth Worth Studios</title>
+<meta name="description" content="Start a project with Forth Worth Studios. Custom websites, AI agents, internal tools and growth retainers for brands across India and worldwide. Tell us what you're building — we respond fast."/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
+<link rel="canonical" href="https://forthworthstudios.space/contact.html"/>
+<meta name="theme-color" content="#050508"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Forth Worth Studios"/>
+<meta property="og:title" content="Contact — Forth Worth Studios"/>
+<meta property="og:description" content="Tell us what you're building. We respond fast and don't waste your time."/>
+<meta property="og:url" content="https://forthworthstudios.space/contact.html"/>
+<meta property="og:image" content="https://forthworthstudios.space/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://forthworthstudios.space/og-image.png"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ContactPage","name":"Contact Forth Worth Studios","url":"https://forthworthstudios.space/contact.html","mainEntity":{"@type":"ProfessionalService","name":"Forth Worth Studios","email":"hello@forthworthstudios.space","telephone":"+917452905923","areaServed":"Worldwide","sameAs":["https://instagram.com/forthworth.studios","https://www.linkedin.com/company/forth-worth-studios/"]}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://forthworthstudios.space/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://forthworthstudios.space/contact.html"}]}
+</script>
+<!-- fonts are self-hosted in style.css; preload only the two that paint first -->
+<link rel="preload" as="font" type="font/woff2" href="fonts/BigShouldersDisplay-900-normal-latin.woff2" crossorigin/>
+<link rel="preload" as="font" type="font/woff2" href="fonts/Barlow-400-normal-latin.woff2" crossorigin/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  #ct{padding:140px 0 80px;}
+  .ct-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:70px;align-items:start;margin-top:34px;}
+  .ct-left p.intro{font-weight:300;font-size:1.05rem;line-height:1.9;color:#9a9aa0;max-width:380px;margin-bottom:34px;}
+  .ct-channels{display:flex;flex-direction:column;}
+  .channel{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);transition:padding var(--t2);}
+  .channel:first-child{border-top:1px solid var(--line);}
+  .channel:hover{padding-left:8px;}
+  .ch-icon{width:22px;height:22px;flex-shrink:0;color:var(--red);display:flex;align-items:center;justify-content:center;}
+  .ch-icon svg{width:20px;height:20px;}
+  .ch-label{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.22em;text-transform:uppercase;color:var(--quiet);min-width:82px;}
+  .ch-val{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);transition:color var(--t1);}
+  .channel:hover .ch-val{color:var(--white);}
+  .ch-arr{margin-left:auto;color:var(--dim);font-size:1rem;transition:color var(--t1),transform var(--t1);}
+  .channel:hover .ch-arr{color:var(--red);transform:translate(4px,-4px);}
+  .next-steps{margin-top:40px;}
+  .next-steps .ns-h{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.24em;text-transform:uppercase;color:var(--quiet);margin-bottom:14px;}
+  .ns{display:flex;align-items:baseline;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);}
+  .ns b{font-family:'Big Shoulders Display',sans-serif;font-weight:900;color:var(--quiet);font-size:.85rem;}
+  .ns span{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+
+  .ct-form{display:flex;flex-direction:column;gap:2px;}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+  .fg{display:flex;flex-direction:column;}
+  .fg label{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding:14px 18px 0;background:#08080c;}
+  .fg.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .fg input,.fg select,.fg textarea{background:#08080c;border:none;outline:none;padding:8px 18px 16px;font-family:'Barlow Condensed',sans-serif;
+    font-size:1.05rem;letter-spacing:.04em;color:var(--white);width:100%;-webkit-appearance:none;border-bottom:2px solid transparent;transition:border-color var(--t1);}
+  .fg input:focus,.fg select:focus,.fg textarea:focus{border-bottom-color:var(--red);}
+  .fg input::placeholder,.fg textarea::placeholder{color:#7a7a82;}   /* was #3a3a40 — 1.8:1, unreadable */
+  .fg textarea{min-height:130px;resize:none;}
+  .fg select option{background:#0a0a10;}
+  .submit{margin-top:14px;background:var(--red);border:none;padding:20px;font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+    font-size:1rem;letter-spacing:.2em;text-transform:uppercase;color:var(--black);cursor:pointer;transition:background var(--t1),transform var(--t1);width:100%;}
+  .submit:hover{background:var(--red-dark);transform:translateY(-2px);}
+  .form-status{display:none;font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;
+    padding:18px;margin-top:12px;text-align:center;}
+  .form-status.ok{display:block;color:#8fdd97;background:rgba(46,125,50,.12);border:1px solid rgba(46,125,50,.35);}
+  .form-status.err{display:block;color:#ff8579;background:rgba(204,42,30,.12);border:1px solid rgba(204,42,30,.4);}
+  .form-status a{color:inherit;text-decoration:underline;}
+  @media(max-width:768px){ .ct-grid{grid-template-columns:1fr;gap:40px;} .frow{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<div id="loader"><div class="lname">Forth<span style="color:#000">.</span>Worth</div><video src="loader.mp4" muted playsinline autoplay loop></video><div class="lz">Loading</div></div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="Forth Worth Studios — Home"><img src="logo.png" alt="Forth Worth Studios" width="383" height="204"/></a>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="services.html">Services</a>
+    <a href="why-forthworth.html">Why ForthWorth</a>
+    <a href="about.html">About</a>
+    <a href="blog.html">Journal</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Let's Build</a>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="blog.html">Journal</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<main id="main" class="wrap">
+  <section id="ct">
+    <div class="eyebrow">Get In Touch</div>
+    <h1 class="s-title">Let's <span class="red">Build.</span></h1>
+    <div class="ct-grid">
+      <div class="ct-left">
+        <p class="intro">Have a project in mind? Tell us what you're building — the vision, the budget, the references. We respond fast and don't waste your time.</p>
+        <div class="ct-channels">
+          <a href="mailto:hello@forthworthstudios.space" class="channel">
+            <span class="ch-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.24-8 5-8-5V6l8 5 8-5z"/></svg></span>
+            <span class="ch-label">Email</span><span class="ch-val">hello@forthworthstudios.space</span><span class="ch-arr">↗</span>
+          </a>
+          <a href="https://instagram.com/forthworth.studios" target="_blank" rel="noopener noreferrer" class="channel">
+            <span class="ch-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.07.05 1.8.22 2.43.47.66.25 1.2.59 1.75 1.13.54.55.88 1.09 1.13 1.75.25.63.42 1.36.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.07-.22 1.8-.47 2.43a4.9 4.9 0 0 1-1.13 1.75c-.55.54-1.09.88-1.75 1.13-.63.25-1.36.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.07-.05-1.8-.22-2.43-.47a4.9 4.9 0 0 1-1.75-1.13 4.9 4.9 0 0 1-1.13-1.75c-.25-.63-.42-1.36-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.07.22-1.8.47-2.43.25-.66.59-1.2 1.13-1.75.55-.54 1.09-.88 1.75-1.13.63-.25 1.36-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 1.8c-2.67 0-2.99.01-4.04.06-.98.04-1.5.21-1.86.35-.47.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.36-.31.88-.35 1.86-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.98.21 1.5.35 1.86.18.47.4.8.75 1.15.35.35.68.57 1.15.75.36.14.88.31 1.86.35 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.98-.04 1.5-.21 1.86-.35.47-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.36.31-.88.35-1.86.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.98-.21-1.5-.35-1.86a3.1 3.1 0 0 0-.75-1.15 3.1 3.1 0 0 0-1.15-.75c-.36-.14-.88-.31-1.86-.35-1.05-.05-1.37-.06-4.04-.06zm0 3.06a5.14 5.14 0 1 1 0 10.28 5.14 5.14 0 0 1 0-10.28zm0 1.8a3.34 3.34 0 1 0 0 6.68 3.34 3.34 0 0 0 0-6.68zm5.34-3.21a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></span>
+            <span class="ch-label">Instagram</span><span class="ch-val">@forthworth.studios</span><span class="ch-arr">↗</span>
+          </a>
+          <a href="https://wa.me/917452905923" target="_blank" rel="noopener noreferrer" class="channel">
+            <span class="ch-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.69-6.16a11.87 11.87 0 0 1-1.6-5.96C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.7-1.45L.06 24zM6.6 20.13c1.68 1 3.28 1.6 5.4 1.6 5.45 0 9.9-4.44 9.9-9.9a9.84 9.84 0 0 0-2.9-7A9.81 9.81 0 0 0 12.07 2c-5.46 0-9.9 4.44-9.9 9.9 0 2.23.65 3.9 1.74 5.65l-1 3.66 3.69-1.08zM18.01 14.6c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41z"/></svg></span>
+            <span class="ch-label">WhatsApp</span><span class="ch-val">+91 7452905923</span><span class="ch-arr">↗</span>
+          </a>
+          <a href="tel:+919027026274" class="channel">
+            <span class="ch-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a.99.99 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg></span>
+            <span class="ch-label">Sales</span><span class="ch-val">+91 90270 26274</span><span class="ch-arr">↗</span>
+          </a>
+          <a href="https://www.linkedin.com/company/forth-worth-studios/" target="_blank" rel="noopener noreferrer" class="channel">
+            <span class="ch-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></span>
+            <span class="ch-label">LinkedIn</span><span class="ch-val">Forth Worth Studios</span><span class="ch-arr">↗</span>
+          </a>
+        </div>
+        <div class="next-steps">
+          <div class="ns-h">— What Happens Next</div>
+          <div class="ns"><b>01</b><span>We reply within 24 hours</span></div>
+          <div class="ns"><b>02</b><span>A quick call to scope it out</span></div>
+          <div class="ns"><b>03</b><span>Proposal + timeline in 48 hours</span></div>
+        </div>
+      </div>
+      <div class="ct-right">
+        <form class="ct-form" id="contactForm" action="https://formspree.io/f/meedvzyb" method="POST">
+          <div class="frow">
+            <div class="fg"><label for="name">Your Name</label><input type="text" id="name" name="name" placeholder="Your name" required/></div>
+            <div class="fg"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="you@email.com" required/></div>
+          </div>
+          <div class="fg"><label for="project">What are you building?</label><input type="text" id="project" name="project" placeholder="Clothing brand, portfolio, store, AI agent..."/></div>
+          <div class="fg"><label for="budget">Budget Range</label>
+            <select id="budget" name="budget">
+              <option value="" disabled selected>Select a range</option>
+              <option>Under ₹10,000</option>
+              <option>₹10,000 – ₹20,000</option>
+              <option>₹20,000 – ₹35,000</option>
+              <option>₹35,000 – ₹60,000</option>
+              <option>₹60,000+</option>
+              <option>Not sure yet — let's talk</option>
+            </select>
+          </div>
+          <div class="fg"><label for="message">Tell us more</label><textarea id="message" name="message" placeholder="What do you need, what's the vision, any references..."></textarea></div>
+          <!-- honeypot: bots fill this, humans never see it. Formspree drops anything with _gotcha set. -->
+          <div class="fg hp" aria-hidden="true"><label for="_gotcha">Leave this empty</label><input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off"/></div>
+          <input type="hidden" name="_source" id="_source"/>
+          <button type="submit" class="submit">Send It →</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div><div class="f-logo">FORTH<span>.</span>WORTH</div><div class="f-tag">We build what others can't imagine.</div></div>
+  <div class="f-right">
+    <div class="f-links"><a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="blog.html">Journal</a><a href="contact.html">Contact</a><a href="https://instagram.com/forthworth.studios" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+    <div class="f-note">© 2026 Forth Worth Studios · Delhi → Worldwide · <a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+(function(){
+  var f = document.getElementById('contactForm');
+  var btn = f.querySelector('.submit');
+  var status = document.getElementById('formStatus');
+
+  // record where the lead came from — referrer + any utm tags on the URL
+  var src = document.referrer || 'direct';
+  if (location.search) src += ' | ' + location.search.replace(/^\?/, '');
+  document.getElementById('_source').value = src;
+
+  function say(kind, html){
+    status.className = 'form-status ' + kind;
+    status.innerHTML = html;
+    // the form is tall — on mobile the message lands off-screen without this
+    status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (f._gotcha.value) return;                  // bot
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    status.className = 'form-status';
+
+    fetch(f.action, { method:'POST', body:new FormData(f), headers:{ 'Accept':'application/json' } })
+      .then(function(r){
+        btn.disabled = false; btn.textContent = 'Send It →';
+        if (r.ok) {
+          f.reset();
+          say('ok', '✓ Message sent. We’ll hit you back within 24 hours.');
+          if (window.fwTrack) fwTrack('lead_submit', { page: location.pathname });
+        } else {
+          say('err', 'Something went wrong. Email us directly at <a href="mailto:hello@forthworthstudios.space">hello@forthworthstudios.space</a>');
+        }
+      })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = 'Send It →';
+        say('err', 'Couldn’t reach the server. Email us at <a href="mailto:hello@forthworthstudios.space">hello@forthworthstudios.space</a> or <a href="https://wa.me/917452905923">WhatsApp us</a>.');
+      });
+  });
+})();
+</script>
+</body>
+</html>

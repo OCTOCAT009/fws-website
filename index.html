@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="apple-touch-icon" href="favicon.png"/>
+<title>Forth Worth Studios — Custom Web Design &amp; Development Studio in India</title>
+<meta name="description" content="Forth Worth Studios builds premium custom websites, Shopify stores, and AI-powered web experiences for brands across India and worldwide. No templates. No page builders. Built from a blank canvas."/>
+<meta name="author" content="Aish Madaan — Forth Worth Studios"/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
+<link rel="canonical" href="https://forthworthstudios.space/"/>
+<meta name="theme-color" content="#050508"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Forth Worth Studios"/>
+<meta property="og:locale" content="en_IN"/>
+<meta property="og:title" content="Forth Worth Studios — We Build What Others Can't Imagine"/>
+<meta property="og:description" content="Premium custom websites, Shopify stores & AI web experiences for brands across India and worldwide. Built from a blank canvas."/>
+<meta property="og:url" content="https://forthworthstudios.space/"/>
+<meta property="og:image" content="https://forthworthstudios.space/og-image.png"/>
+<meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Forth Worth Studios — Custom Web Design &amp; Development"/>
+<meta name="twitter:description" content="Premium custom websites, Shopify stores & AI web experiences. Built from a blank canvas."/>
+<meta name="twitter:image" content="https://forthworthstudios.space/og-image.png"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Forth Worth Studios","description":"Custom web design and development studio building premium websites, Shopify stores and AI-powered web experiences for brands across India and worldwide.","url":"https://forthworthstudios.space/","logo":"https://forthworthstudios.space/logo.png","image":"https://forthworthstudios.space/og-image.png","email":"hello@forthworthstudios.space","telephone":"+917452905923","founder":[{"@type":"Person","name":"Utsav Madaan"},{"@type":"Person","name":"Aish Madaan"}],"foundingDate":"2026","areaServed":"Worldwide","address":{"@type":"PostalAddress","addressLocality":"Delhi","addressCountry":"IN"},"knowsAbout":["Web Design","Web Development","Shopify Development","AI Agents","Internal Tools","Client Portals","SEO","Ecommerce","Website Maintenance"],"sameAs":["https://instagram.com/forthworth.studios","https://www.linkedin.com/company/forth-worth-studios/"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Forth Worth Studios","url":"https://forthworthstudios.space/"}
+</script>
+<!-- fonts are self-hosted in style.css; preload only the two that paint first -->
+<link rel="preload" as="font" type="font/woff2" href="fonts/BigShouldersDisplay-900-normal-latin.woff2" crossorigin/>
+<link rel="preload" as="font" type="font/woff2" href="fonts/Barlow-400-normal-latin.woff2" crossorigin/>
+<link rel="preload" as="image" href="poster-hero.webp" fetchpriority="high"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  #hero{height:100svh;min-height:560px;position:relative;display:flex;flex-direction:column;justify-content:center;
+    padding:0 max(28px,calc((100vw - 1280px)/2));overflow:hidden;}
+  #hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.5);z-index:0;}
+  #hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(5,5,8,.4),rgba(5,5,8,.2) 40%,rgba(5,5,8,.85));}
+  .hero-inner{position:relative;z-index:2;max-width:min(960px,92vw);}
+  .h-tag{font-family:'DM Mono',monospace;font-size:var(--label);letter-spacing:.34em;text-transform:uppercase;color:var(--quiet);margin-bottom:24px;}
+  .h1{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(2.7rem,7.4vw,6.6rem);line-height:.9;letter-spacing:-.005em;
+    text-transform:uppercase;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;}
+  .h1 .red{color:var(--red);}
+  .h1 .out{color:transparent;-webkit-text-stroke:1.5px var(--white);}
+  .h-sub{font-family:var(--sub);font-weight:400;font-size:clamp(1.05rem,1.5vw,1.25rem);color:#c6c6cc;
+    max-width:520px;line-height:1.62;margin:34px 0 40px;letter-spacing:.02em;min-height:1.6em;}
+  .hsub-rot{display:inline-block;transition:opacity var(--t3) var(--e),transform var(--t3) var(--e);}
+  .hsub-rot.rot-out{opacity:0;transform:translateY(10px);}
+  .h-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+  @media(max-width:560px){ .h-cta{flex-direction:column;align-items:flex-start;} }
+
+  /* scroll hint — the page used to be locked at one screen, so tell people there's more */
+  .scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
+    font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.28em;text-transform:uppercase;
+    color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:9px;}
+  .scroll-hint::after{content:'';width:1px;height:30px;background:linear-gradient(var(--red),transparent);}
+  @media (prefers-reduced-motion: no-preference){
+    .scroll-hint{animation:sh 2.4s ease-in-out infinite;}
+    @keyframes sh{0%,100%{transform:translateX(-50%) translateY(0);opacity:.75}50%{transform:translateX(-50%) translateY(6px);opacity:1}}
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<div id="loader"><div class="lname">Forth<span style="color:#000">.</span>Worth</div><video src="loader.mp4" muted playsinline autoplay loop></video><div class="lz">Loading</div></div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="Forth Worth Studios — Home"><img src="logo.png" alt="Forth Worth Studios" width="383" height="204"/></a>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="services.html">Services</a>
+    <a href="why-forthworth.html">Why ForthWorth</a>
+    <a href="about.html">About</a>
+    <a href="blog.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Let's Build</a>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="blog.html">Journal</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<main id="main">
+
+<section id="hero">
+  <video id="hero-vid" src="110d81a03bf148651239a5576cea13fb_720w.mp4" poster="poster-hero.webp" autoplay muted loop playsinline preload="auto"></video>
+  <div id="hero-shade"></div>
+  <div class="hero-inner">
+    <h1 class="h1">
+      <span class="ln"><span>Every Brand</span></span>
+      <span class="ln"><span class="red">Has A Story.</span></span>
+      <span class="ln"><span>Let Yours</span></span>
+      <span class="ln"><span class="fillin">Be Felt.</span></span>
+    </h1>
+    <p class="h-sub"><span class="hsub-rot" id="heroRotate">For Brands that want more</span></p>
+    <div class="h-cta">
+      <a href="work.html" class="btn btn-red">See The Work →</a>
+      <a href="services.html" class="btn btn-ghost">Services</a>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">Scroll</div>
+</section>
+
+<div class="wrap">
+
+  <!-- ── SELECTED WORK ── -->
+  <section class="home-sec">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Selected Work</div>
+        <h2>Brands We've <span class="red">Built.</span></h2>
+      </div>
+      <a href="work.html" class="sec-link">All Work ↗</a>
+    </div>
+    <div class="home-work">
+      <a href="work.html" class="hw-card">
+        <div class="hw-shot"><picture>
+          <source srcset="shot-turiya.webp" type="image/webp"/>
+          <img src="shot-turiya.jpg" alt="The Turiya website" width="1100" height="688" loading="lazy" decoding="async"/>
+        </picture></div>
+        <div class="hw-bar"><span class="hw-name">Turiya</span><span class="hw-tag">Clothing ’26</span></div>
+        <p class="hw-desc">Philosophical streetwear, New Delhi. A gamified rituals system and a product page that reads like art, not a listing.</p>
+      </a>
+      <a href="work.html" class="hw-card">
+        <div class="hw-shot"><picture>
+          <source srcset="shot-streeterror.webp" type="image/webp"/>
+          <img src="shot-streeterror.jpg" alt="The Street Error storefront" width="1100" height="688" loading="lazy" decoding="async"/>
+        </picture></div>
+        <div class="hw-bar"><span class="hw-name">Street Error</span><span class="hw-tag">Shopify ’26</span></div>
+        <p class="hw-desc">A custom Shopify theme with a returns &amp; exchange system, live order verification and COD done properly.</p>
+      </a>
+      <a href="work.html" class="hw-card">
+        <div class="hw-shot"><picture>
+          <source srcset="shot-reesh.webp" type="image/webp"/>
+          <img src="shot-reesh.jpg" alt="The Onlyreesh entry gate" width="1100" height="688" loading="lazy" decoding="async"/>
+        </picture></div>
+        <div class="hw-bar"><span class="hw-name">Onlyreesh</span><span class="hw-tag">Platform ’26</span></div>
+        <p class="hw-desc">A custom WebGL starfield and immersive gate for the founder of Bollytekk. Atmosphere before a word is read.</p>
+      </a>
+      <a href="work.html" class="hw-card">
+        <div class="hw-shot"><picture>
+          <source srcset="shot-resentening.webp" type="image/webp"/>
+          <img src="shot-resentening.jpg" alt="The Resentening portfolio" width="1100" height="688" loading="lazy" decoding="async"/>
+        </picture></div>
+        <div class="hw-bar"><span class="hw-name">Resentening</span><span class="hw-tag">Portfolio ’26</span></div>
+        <p class="hw-desc">A gated portfolio — five questions on underground music culture. Answer wrong, you don't get in.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── WHAT WE DO ── -->
+  <section class="home-sec">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">What We Do</div>
+        <h2>Four Disciplines.<br>One <span class="red">Studio.</span></h2>
+      </div>
+      <a href="services.html" class="sec-link">Full Pricing ↗</a>
+    </div>
+    <div class="home-svc">
+      <div class="hs-card">
+        <div class="hs-num">— 01</div>
+        <div class="hs-name">Websites</div>
+        <p class="hs-desc">Custom-coded sites and full storefronts. Built from a blank file — no templates, no page builders, no recycled layouts.</p>
+        <div class="hs-from">One-page sites from<b class="price" data-inr="₹7,500" data-usd="$225" data-eur="€205">₹7,500</b></div>
+      </div>
+      <div class="hs-card">
+        <div class="hs-num">— 02</div>
+        <div class="hs-name">AI Agents</div>
+        <p class="hs-desc">Web chatbots, support agents, voice callers and WhatsApp bots — wired into the systems you already run.</p>
+        <div class="hs-from">From<b class="price" data-inr="₹9,500" data-usd="$265" data-eur="€245">₹9,500</b></div>
+      </div>
+      <div class="hs-card">
+        <div class="hs-num">— 03</div>
+        <div class="hs-name">Internal Tools</div>
+        <p class="hs-desc">Admin panels, client portals, dashboards and the first real version of a product idea. Software, not pages.</p>
+        <div class="hs-from">From<b class="price" data-inr="₹11,000" data-usd="$315" data-eur="€290">₹11,000</b></div>
+      </div>
+      <div class="hs-card">
+        <div class="hs-num">— 04</div>
+        <div class="hs-name">Growth</div>
+        <p class="hs-desc">Monthly care, SEO and studio time on tap. The site keeps getting better after launch instead of quietly decaying.</p>
+        <div class="hs-from">From<b class="price" data-inr="₹2,500/mo" data-usd="$70/mo" data-eur="€65/mo">₹2,500/mo</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="home-sec">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">The Short Version</div>
+        <h2>How It <span class="red">Works.</span></h2>
+      </div>
+      <a href="why-forthworth.html" class="sec-link">Why ForthWorth ↗</a>
+    </div>
+    <div class="flow-row">
+      <div class="flow"><div class="flow-n">01</div><div class="flow-t">Tell us what you're building</div>
+        <p class="flow-d">The vision, the budget, the references. A real conversation — not a form reply and a brochure.</p></div>
+      <div class="flow"><div class="flow-n">02</div><div class="flow-t">We scope it and quote it</div>
+        <p class="flow-d">A written proposal with a timeline and a fixed price, before anyone commits to anything.</p></div>
+      <div class="flow"><div class="flow-n">03</div><div class="flow-t">We build from a blank file</div>
+        <p class="flow-d">No templates, no page builders. You watch it come together instead of waiting for a reveal.</p></div>
+      <div class="flow"><div class="flow-n">04</div><div class="flow-t">Launch, then look after it</div>
+        <p class="flow-d">Hosting, fixes and monthly improvements if you want them — or take the keys and walk.</p></div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ── CLOSING CTA ── -->
+<section class="home-cta">
+  <div class="wrap">
+    <h2>Got A Brand Worth <span class="red">Building?</span></h2>
+    <p>Tell us what you're making — the vision, the budget, the references. We respond fast and don't waste your time.</p>
+    <div class="h-cta"><a href="contact.html" class="btn btn-red">Start A Project →</a><a href="work.html" class="btn btn-ghost">See The Work</a></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div><div class="f-logo">FORTH<span>.</span>WORTH</div><div class="f-tag">We build what others can't imagine.</div></div>
+  <div class="f-right">
+    <div class="f-links"><a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="blog.html">Journal</a><a href="contact.html">Contact</a><a href="https://instagram.com/forthworth.studios" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+    <div class="f-note">© 2026 Forth Worth Studios · Delhi → Worldwide · <a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

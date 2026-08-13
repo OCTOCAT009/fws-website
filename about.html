@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="apple-touch-icon" href="favicon.png"/>
+<title>About — The Studio That Was Always Missing | Forth Worth Studios</title>
+<meta name="description" content="Forth Worth Studios is a custom web design studio founded by Aish Madaan in Delhi, working worldwide. Premium-level craft without the gatekeeping — no templates, no page builders, built from a blank canvas."/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
+<link rel="canonical" href="https://forthworthstudios.space/about.html"/>
+<meta name="theme-color" content="#050508"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Forth Worth Studios"/>
+<meta property="og:title" content="About — Forth Worth Studios"/>
+<meta property="og:description" content="The studio that was always missing. Founded by Aish Madaan · Delhi → Worldwide."/>
+<meta property="og:url" content="https://forthworthstudios.space/about.html"/>
+<meta property="og:image" content="https://forthworthstudios.space/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://forthworthstudios.space/og-image.png"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AboutPage","name":"About Forth Worth Studios","url":"https://forthworthstudios.space/about.html","mainEntity":{"@type":"ProfessionalService","name":"Forth Worth Studios","founder":[{"@type":"Person","name":"Utsav Madaan","jobTitle":"Founder & Brand Strategist","sameAs":"https://www.linkedin.com/in/utsav-madaan-9882832ba/"},{"@type":"Person","name":"Aish Madaan","jobTitle":"Co-Founder & Creative Director","sameAs":"https://www.linkedin.com/in/aishmadaan"}],"foundingDate":"2026","areaServed":"Worldwide","address":{"@type":"PostalAddress","addressLocality":"Delhi","addressCountry":"IN"},"email":"hello@forthworthstudios.space","sameAs":["https://instagram.com/forthworth.studios","https://www.linkedin.com/company/forth-worth-studios/"]}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://forthworthstudios.space/"},{"@type":"ListItem","position":2,"name":"About","item":"https://forthworthstudios.space/about.html"}]}
+</script>
+<!-- fonts are self-hosted in style.css; preload only the two that paint first -->
+<link rel="preload" as="font" type="font/woff2" href="fonts/BigShouldersDisplay-900-normal-latin.woff2" crossorigin/>
+<link rel="preload" as="font" type="font/woff2" href="fonts/Barlow-400-normal-latin.woff2" crossorigin/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  #ab-hero{padding:150px 0 60px;}
+  #ab-hero .lead{font-family:var(--sub);font-weight:300;font-size:clamp(1.1rem,2.2vw,1.5rem);color:var(--muted);max-width:620px;margin-top:26px;line-height:1.55;}
+  .ab-sec{padding:50px 0;border-top:1px solid var(--line);}
+  .ab-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;align-items:start;}
+  .ab-grid h2{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;line-height:.95;}
+  .ab-grid h2 .red{color:var(--red);}
+  .ab-grid h2 .out{color:transparent;-webkit-text-stroke:1.2px var(--white);}
+  .ab-body p{font-family:'Fraunces',serif;font-weight:400;font-size:1.2rem;line-height:1.85;color:#b4b4ba;margin-bottom:20px;letter-spacing:.002em;}
+  .ab-body p strong{color:var(--white);font-weight:500;}
+  .ab-body em{color:var(--red);font-style:italic;}
+  #ab-hero .lead{font-family:var(--sub);font-weight:300;}
+  .pull{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-style:italic;font-size:clamp(1.4rem,3vw,2.2rem);
+    color:var(--white);line-height:1.3;border-left:3px solid var(--red);padding-left:22px;margin:30px 0;}
+  .pull span{color:var(--red);}
+  .founder{display:flex;gap:18px;align-items:center;margin-top:20px;}
+  .founder-badge{width:54px;height:54px;border:1px solid var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:'Big Shoulders Display',sans-serif;font-weight:900;color:var(--red);font-size:1.2rem;flex-shrink:0;}
+  .founder-info b{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1.05rem;color:var(--white);display:block;}
+  .founder-info span{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+  /* founder cards */
+  .founder-card{padding:38px 0;border-top:1px solid var(--line);}
+  .founder-card:first-of-type{border-top:none;padding-top:6px;}
+  .fc-head{display:flex;align-items:center;gap:18px;margin-bottom:26px;}
+  .fc-meta{flex:1;min-width:0;}
+  .fc-meta b{font-family:'Big Shoulders Display',sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:.03em;
+    font-size:clamp(1.4rem,3vw,2rem);color:var(--white);display:block;line-height:1;}
+  .fc-meta span{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.18em;text-transform:uppercase;color:var(--quiet);display:block;margin-top:8px;}
+  .fc-linkedin{width:42px;height:42px;flex-shrink:0;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;
+    justify-content:center;color:var(--muted);transition:color var(--t1),border-color var(--t1),transform var(--t1);}
+  .fc-linkedin:hover{color:var(--red);border-color:var(--red);transform:translateY(-2px);}
+  .fc-linkedin svg{width:18px;height:18px;}
+  .founder-card .ab-body p{margin-bottom:18px;}
+  .founder-card .ab-body p:last-child{margin-bottom:0;}
+  /* founders intro band */
+  .founders-intro-wrap{margin-bottom:14px;}
+  .founders-title{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(2rem,4.6vw,3.4rem);
+    text-transform:uppercase;line-height:.95;margin-top:6px;}
+  .founders-title .red{color:var(--red);}
+  .founders-title .out{color:transparent;-webkit-text-stroke:1.3px var(--white);}
+  .founders-lead{font-family:var(--sub);font-weight:300;font-size:clamp(1.1rem,2vw,1.35rem);
+    color:var(--muted);max-width:620px;margin-top:20px;line-height:1.6;}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:10px;}
+  .pil{background:#08080c;padding:30px 24px;}
+  .pil-n{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:1.8rem;color:rgba(204,42,30,.3);line-height:1;margin-bottom:14px;}
+  .pil h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:8px;}
+  .pil p{font-weight:300;font-size:.9rem;line-height:1.7;color:var(--muted);}
+  .ab-cta{padding:70px 0;text-align:center;border-top:1px solid var(--line);}
+  .ab-cta h2{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.6rem);text-transform:uppercase;line-height:1;margin-bottom:26px;}
+  .ab-cta h2 .red{color:var(--red);}
+  @media(max-width:768px){ .ab-grid{grid-template-columns:1fr;gap:26px;} .pillars{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<div id="loader"><div class="lname">Forth<span style="color:#000">.</span>Worth</div><video src="loader.mp4" muted playsinline autoplay loop></video><div class="lz">Loading</div></div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="Forth Worth Studios — Home"><img src="logo.png" alt="Forth Worth Studios" width="383" height="204"/></a>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="services.html">Services</a>
+    <a href="why-forthworth.html">Why ForthWorth</a>
+    <a href="about.html" class="active">About</a>
+    <a href="blog.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Let's Build</a>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="blog.html">Journal</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<main id="main" class="wrap">
+  <section id="ab-hero">
+    <div class="eyebrow">Who We Are</div>
+    <h1 class="s-title">The Studio<br>That Was<br><span class="red">Always</span> <span class="out">Missing.</span></h1>
+    <p class="lead">Forth Worth Studios builds the websites brands deserve — premium-level craft, without the premium-level gatekeeping.</p>
+  </section>
+
+  <section class="chap">
+    <div class="chap-pin">
+      <span class="chap-num">01</span>
+      <h2>The <span class="red">Origin.</span></h2>
+    </div>
+    <div class="chap-body">
+        <p>Forth Worth started from frustration. We kept watching brands with <strong>real soul</strong> — people pouring everything into their music, their clothing, their vision — get handed websites that looked like everyone else's. Dragged-and-dropped. Templated. Forgettable.</p>
+        <p>The good studios charged like banks. The affordable ones shipped recycled themes. There was nothing in between for the people who actually needed it most — the independent creators, the first-time founders, the ones building something that <em>means</em> something.</p>
+        <p>So we built the studio we always wished existed. <strong>No templates. No page builders. No recycled layouts.</strong> Every project starts from a blank file and a real conversation.</p>
+    </div>
+  </section>
+
+  <section class="chap">
+    <div class="chap-pin">
+      <span class="chap-num">02</span>
+      <h2>How We <span class="red">Work.</span></h2>
+    </div>
+    <div class="chap-body">
+        <p>We treat design, code, motion and copy as <strong>one piece</strong> — not separate steps handed between people who never talk. That's why our sites feel whole instead of assembled.</p>
+        <p>Every project gets our full weight. Whether it's your first brand or your tenth, you get the same obsessive care — the kind that sweats the loading animation, the micro-interaction, the way the type sits at 2am.</p>
+        <div class="pull">"We don't do half-measures. If it's not hitting, <span>we keep going.</span>"</div>
+        <p>And we build things most studios won't touch — custom returns systems, AI agents, gamified experiences, WebGL worlds. If you can imagine it, that's the starting line.</p>
+    </div>
+  </section>
+
+  <section class="ab-sec">
+    <div class="founders-intro-wrap rv">
+      <div class="eyebrow">Meet The Founders</div>
+      <h2 class="founders-title">Two Minds.<br>One <span class="red">Studio.</span></h2>
+      <p class="founders-lead">Forth Worth Studios runs on two opposite instincts — strategy and creativity — meeting in the middle of every project.</p>
+    </div>
+
+    <div class="founder-card rv">
+      <div class="fc-head">
+        <div class="founder-badge">UM</div>
+        <div class="fc-meta"><b>Utsav Madaan</b><span>Founder &amp; Brand Strategist</span></div>
+        <a href="https://www.linkedin.com/in/utsav-madaan-9882832ba/" target="_blank" rel="noopener noreferrer" class="fc-linkedin" aria-label="Utsav Madaan on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+      </div>
+      <div class="ab-body">
+        <p>Utsav brings the <strong>strategic foundation</strong> behind Forth Worth Studios.</p>
+        <p>Currently pursuing his undergraduate studies at Shri Ram College of Commerce (SRCC), he has worked across consulting, research, and corporate environments, gaining experience through projects involving brand strategy, business analysis, consumer understanding, and growth-focused decision making.</p>
+        <p>Having worked with organizations such as <strong>ITC</strong> and contributed to multiple research and consulting initiatives, Utsav approaches every project from a business-first perspective. His focus is ensuring that every website aligns with the client's brand identity, customer expectations, and long-term growth objectives.</p>
+        <p>At Forth Worth Studios, he leads <strong>brand discovery, client strategy, market research, and positioning</strong>, helping transform websites from simple digital assets into meaningful business tools.</p>
+      </div>
+    </div>
+
+    <div class="founder-card rv">
+      <div class="fc-head">
+        <div class="founder-badge">AM</div>
+        <div class="fc-meta"><b>Aish Madaan</b><span>Co-Founder &amp; Creative Director</span></div>
+        <a href="https://www.linkedin.com/in/aishmadaan" target="_blank" rel="noopener noreferrer" class="fc-linkedin" aria-label="Aish Madaan on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+      </div>
+      <div class="ab-body">
+        <p>Aish is the <strong>creative mind</strong> behind Forth Worth Studios.</p>
+        <p>His journey began while building his own fashion brand, where he realized that many growing brands were forced to choose between generic templates and expensive agency solutions. Unsatisfied with both, he started designing and developing websites that felt as distinctive as the brands they represented.</p>
+        <p>Beyond Forth Worth Studios, Aish has founded multiple ventures, including <strong>Turiya</strong>, a clothing brand, and <strong>Resentening</strong>, a creative design studio. Through these experiences, he developed a deep understanding of branding, visual storytelling, digital design, and modern consumer culture.</p>
+        <p>At Forth Worth Studios, he leads <strong>design, development, creative direction, and digital experience strategy</strong>—transforming ideas into immersive online experiences that customers remember.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chap">
+    <div class="chap-pin">
+      <span class="chap-num">03</span>
+      <h2>The Founder <span class="red">Dynamic.</span></h2>
+    </div>
+    <div class="chap-body">
+        <div class="pull">Strategy Meets <span>Creativity.</span></div>
+        <p>Great digital experiences require more than beautiful visuals. They require an understanding of both <strong>business and design.</strong></p>
+        <p>At Forth Worth Studios, every project benefits from two perspectives: strategic thinking and creative execution.</p>
+        <p>While <strong>Utsav</strong> focuses on brand positioning, audience understanding, and business objectives, <strong>Aish</strong> focuses on design, interaction, storytelling, and user experience.</p>
+        <p>Together, this allows us to create websites that not only look exceptional, but also <em>serve a clear purpose</em> for the businesses behind them.</p>
+    </div>
+  </section>
+
+  <section class="ab-sec">
+    <div class="rv" style="margin-bottom:20px;"><div class="eyebrow">What We Believe</div></div>
+    <div class="pillars rv">
+      <div class="pil"><div class="pil-n">01</div><h4>Craft Over Speed</h4><p>Anyone can ship fast. We ship right — then fast. The details are the brand.</p></div>
+      <div class="pil"><div class="pil-n">02</div><h4>Access Over Gatekeeping</h4><p>Premium work shouldn't require a premium budget. Real prices, real craft.</p></div>
+      <div class="pil"><div class="pil-n">03</div><h4>Soul Over Templates</h4><p>Your brand isn't a layout to fill. It's a world to build from scratch.</p></div>
+    </div>
+  </section>
+
+  <section class="ab-cta">
+    <h2>Let's Build Something<br>Worth <span class="red">Remembering.</span></h2>
+    <a href="contact.html" class="btn btn-red">Start A Project →</a>
+  </section>
+</main>
+
+<footer>
+  <div><div class="f-logo">FORTH<span>.</span>WORTH</div><div class="f-tag">We build what others can't imagine.</div></div>
+  <div class="f-right">
+    <div class="f-links"><a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="blog.html">Journal</a><a href="contact.html">Contact</a><a href="https://instagram.com/forthworth.studios" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+    <div class="f-note">© 2026 Forth Worth Studios · Delhi → Worldwide · <a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

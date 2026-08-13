@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="apple-touch-icon" href="favicon.png"/>
+<title>Services &amp; Pricing — Web, AI Agents &amp; Growth | Forth Worth Studios</title>
+<meta name="description" content="Transparent pricing for custom websites, AI agents, internal tools and monthly growth retainers. Landing pages from ₹7,500, multi-page builds from ₹15,000, AI agents from ₹9,500. India &amp; worldwide."/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
+<link rel="canonical" href="https://forthworthstudios.space/services.html"/>
+<meta name="theme-color" content="#050508"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Forth Worth Studios"/>
+<meta property="og:title" content="Services &amp; Pricing — Forth Worth Studios"/>
+<meta property="og:description" content="Custom websites, AI agents, internal tools &amp; growth retainers. Transparent pricing, India &amp; worldwide."/>
+<meta property="og:url" content="https://forthworthstudios.space/services.html"/>
+<meta property="og:image" content="https://forthworthstudios.space/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://forthworthstudios.space/og-image.png"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"OfferCatalog","name":"Forth Worth Studios Services","url":"https://forthworthstudios.space/services.html","provider":{"@type":"ProfessionalService","name":"Forth Worth Studios","email":"hello@forthworthstudios.space","telephone":"+919027026274","areaServed":"Worldwide","sameAs":["https://instagram.com/forthworth.studios","https://www.linkedin.com/company/forth-worth-studios/"]},"itemListElement":[{"@type":"Offer","name":"Launch — One Page Website","priceCurrency":"INR","price":"7500"},{"@type":"Offer","name":"Signature — Multi-page Custom Website","priceCurrency":"INR","price":"15000"},{"@type":"Offer","name":"Online Store","priceCurrency":"INR","price":"20000"},{"@type":"Offer","name":"Flagship — Custom Systems &amp; Backend","priceCurrency":"INR","price":"32500"},{"@type":"Offer","name":"AI Support Agent","priceCurrency":"INR","price":"12500"},{"@type":"Offer","name":"Client Portal","priceCurrency":"INR","price":"22500"},{"@type":"Offer","name":"Product &amp; MVP Build","priceCurrency":"INR","price":"35000"},{"@type":"Offer","name":"Growth Retainer","priceCurrency":"INR","price":"6000"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://forthworthstudios.space/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://forthworthstudios.space/services.html"}]}
+</script>
+<!-- fonts are self-hosted in style.css; preload only the two that paint first -->
+<link rel="preload" as="font" type="font/woff2" href="fonts/BigShouldersDisplay-900-normal-latin.woff2" crossorigin/>
+<link rel="preload" as="font" type="font/woff2" href="fonts/Barlow-400-normal-latin.woff2" crossorigin/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  #svc-hero{padding:140px 0 30px;}
+  .cur-row{display:flex;align-items:center;gap:14px;margin:30px 0 8px;flex-wrap:wrap;}
+  .cur-lbl{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
+  .cur-drop{position:relative;}
+  .cur-select{appearance:none;-webkit-appearance:none;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;
+    background:var(--faint);color:var(--white);border:1px solid #2a2a30;padding:11px 40px 11px 18px;cursor:pointer;text-transform:uppercase;}
+  .cur-drop::after{content:'▾';position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--red);pointer-events:none;font-size:.7rem;}
+  .cur-select:focus{outline:none;border-color:var(--red);}
+
+  .cat-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:26px 0 36px;border-bottom:1px solid var(--line);}
+  .cat-tab{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;
+    background:none;border:none;color:var(--muted);padding:14px 22px;cursor:pointer;transition:color var(--t1);border-bottom:3px solid transparent;margin-bottom:-1px;}
+  .cat-tab:hover{color:var(--white);}
+  .cat-tab.active{color:var(--white);border-bottom-color:var(--red);}
+
+  .svc-cat{display:none;padding-bottom:60px;}
+  .svc-cat.active{display:block;animation:fade .4s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  @media(prefers-reduced-motion:reduce){ .svc-cat.active{animation:none;} }
+
+  /* ── TIERS: three dark boxes that carry the decision. One starred. ── */
+  .tier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(278px,1fr));gap:16px;}
+  .tier-card{position:relative;display:flex;flex-direction:column;gap:18px;padding:34px 26px 26px;
+    background:linear-gradient(180deg,#0d0d15 0%,#06060a 100%);border:1px solid #1c1c26;
+    transition:border-color var(--t2) var(--e),transform var(--t2) var(--e),box-shadow var(--t2) var(--e);}
+  /* hairline that lights up on hover — the card feels switched on, not just recoloured */
+  .tier-card::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:transparent;transition:background var(--t2);}
+  .tier-card:hover{border-color:#343442;transform:translateY(-5px);box-shadow:0 22px 46px rgba(0,0,0,.6);}
+  .tier-card:hover::before{background:linear-gradient(90deg,var(--red),transparent);}
+  .tier-card.feat{border-color:rgba(204,42,30,.45);background:linear-gradient(180deg,#160a0f 0%,#07060a 100%);}
+  .tier-card.feat::before{background:var(--red);}
+  .tier-card.feat:hover{border-color:var(--red);box-shadow:0 22px 52px rgba(204,42,30,.22);}
+  @media(prefers-reduced-motion:reduce){ .tier-card,.tier-card:hover{transform:none;transition:border-color var(--t2);} }
+
+  .tc-badge{position:absolute;top:-1px;right:-1px;font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.18em;
+    text-transform:uppercase;color:var(--black);background:var(--red);padding:6px 12px;}
+  .tc-name{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:2.15rem;line-height:.92;
+    text-transform:uppercase;color:var(--white);letter-spacing:.01em;}
+  .tc-desc{font-family:var(--sub);font-weight:300;font-size:.92rem;color:var(--muted);line-height:1.55;margin-top:9px;}
+  .tc-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;flex:1;}
+  .tc-list li{font-family:'Barlow',sans-serif;font-weight:300;font-size:.85rem;color:#9a9aa0;line-height:1.45;
+    padding-left:18px;position:relative;}
+  .tc-list li::before{content:'—';position:absolute;left:0;color:var(--quiet);}
+
+  /* the price box — the one thing the eye should land on */
+  .tc-price{margin-top:auto;background:#040407;border:1px solid #1e1e28;padding:15px 18px 17px;}
+  .tier-card.feat .tc-price{border-color:rgba(204,42,30,.38);background:#0a0407;}
+  .svc-from{display:block;font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.22em;
+    text-transform:uppercase;color:var(--dim);margin-bottom:7px;}
+  .svc-price{display:block;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:2.3rem;
+    line-height:1;letter-spacing:.01em;color:var(--red);text-shadow:0 0 26px rgba(204,42,30,.4);}
+
+  /* ── QUIET BAND: everything else. Present, findable, not competing. ── */
+  .band-label{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.28em;text-transform:uppercase;
+    color:var(--quiet);margin:44px 0 4px;display:flex;align-items:center;gap:16px;}
+  .band-label::after{content:'';flex:1;height:1px;background:var(--line);}
+  .svc-rows{display:flex;flex-direction:column;}
+  .svc-row{display:flex;align-items:baseline;gap:18px;padding:16px 2px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .svc-row:hover{background:#0a0a10;}
+  .sr-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.08rem;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--white);min-width:210px;}
+  .sr-desc{font-family:'Barlow',sans-serif;font-weight:300;font-size:.84rem;color:var(--muted);flex:1;min-width:180px;}
+  .sr-price{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:1.35rem;color:var(--red);margin-left:auto;white-space:nowrap;}
+
+  /* ── ADD-ONS: bridge the gap between tiers without a new tier. ── */
+  .addon-row{display:flex;flex-wrap:wrap;gap:2px;background:var(--line);border:1px solid var(--line);}
+  .addon{background:#08080c;padding:16px 20px;flex:1 1 190px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .addon b{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--white);}
+  .addon .price{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:1.15rem;color:var(--red);}
+
+  /* ── TALK TO SALES: the no-price exit on every tab. ── */
+  .sales-strip{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    margin-top:34px;padding:22px 26px;background:#0a0a10;border:1px solid rgba(204,42,30,.28);transition:background var(--t2),border-color var(--t2);}
+  .sales-strip:hover{background:#120a0c;border-color:var(--red);}
+  .ss-l{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--white);}
+  .ss-l span{display:block;font-family:'Barlow',sans-serif;font-weight:300;font-size:.84rem;letter-spacing:0;
+    text-transform:none;color:var(--muted);margin-top:5px;}
+  .ss-r{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+  .ss-r b{display:block;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:1.5rem;
+    letter-spacing:.02em;color:var(--red);margin-top:5px;}
+
+  /* bundles reuse .tier-card — just warm the border so they read as a set */
+  .bundle{border-color:rgba(204,42,30,.24);}
+  .bundle::before{background:linear-gradient(90deg,rgba(204,42,30,.55),transparent);}
+  .tc-was{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.14em;color:var(--dim);
+    text-decoration:line-through;display:block;margin-bottom:5px;}
+  .tc-save{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.16em;text-transform:uppercase;
+    color:#8fdd97;display:block;margin-top:7px;}
+
+  .svc-cta-row{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .svc-note{font-family:var(--sub);font-weight:300;color:var(--muted);font-size:.92rem;margin-top:14px;}
+  .terms{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);display:flex;gap:38px;flex-wrap:wrap;}
+  .term{max-width:270px;}
+  .term b{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.22em;text-transform:uppercase;
+    color:var(--quiet);display:block;margin-bottom:7px;}
+  .term span{font-family:'Barlow',sans-serif;font-weight:300;font-size:.85rem;color:var(--muted);line-height:1.6;}
+
+  @media(max-width:640px){
+    .sr-name{min-width:100%;}
+    .sr-price{margin-left:0;}
+    .svc-row{gap:6px;}
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<div id="loader"><div class="lname">Forth<span style="color:#000">.</span>Worth</div><video src="loader.mp4" muted playsinline autoplay loop></video><div class="lz">Loading</div></div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="Forth Worth Studios — Home"><img src="logo.png" alt="Forth Worth Studios" width="383" height="204"/></a>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="why-forthworth.html">Why ForthWorth</a>
+    <a href="about.html">About</a>
+    <a href="blog.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Let's Build</a>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="blog.html">Journal</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<main id="main" class="wrap">
+  <section id="svc-hero">
+    <div class="eyebrow">What We Offer</div>
+    <h1 class="s-title">Services &amp; <span class="red">Pricing.</span></h1>
+    <div class="cur-row">
+      <span class="cur-lbl">Currency</span>
+      <div class="cur-drop">
+        <select class="cur-select" onchange="setCurrency(this.value)" aria-label="Select currency">
+          <option value="inr">₹ INR</option>
+          <option value="usd">$ USD</option>
+          <option value="eur">€ EUR</option>
+        </select>
+      </div>
+      <span class="svc-note" style="margin:0;">Starting prices · custom quotes on request</span>
+    </div>
+
+    <div class="cat-tabs" role="tablist" aria-label="Service categories">
+      <button class="cat-tab active" role="tab" aria-selected="true"  aria-controls="cat-web"     onclick="showCat('web',this)">Web</button>
+      <button class="cat-tab"        role="tab" aria-selected="false" aria-controls="cat-ai"      onclick="showCat('ai',this)">AI Agents</button>
+      <button class="cat-tab"        role="tab" aria-selected="false" aria-controls="cat-tools"   onclick="showCat('tools',this)">Internal Tools</button>
+      <button class="cat-tab"        role="tab" aria-selected="false" aria-controls="cat-growth"  onclick="showCat('growth',this)">Growth</button>
+      <button class="cat-tab"        role="tab" aria-selected="false" aria-controls="cat-bundles" onclick="showCat('bundles',this)">Bundles</button>
+    </div>
+
+    <!-- ══ WEB ══ -->
+    <div class="svc-cat active" id="cat-web" role="tabpanel" aria-hidden="false">
+      <div class="tier-grid">
+        <div class="tier-card">
+          <div><div class="tc-name">Launch</div><div class="tc-desc">One page, built to convert.</div></div>
+          <ul class="tc-list">
+            <li>Single focused page</li>
+            <li>Custom coded, mobile first</li>
+            <li>Contact form + basic SEO</li>
+            <li>Two revision rounds</li>
+          </ul>
+          <div class="tc-price"><span class="svc-from">From</span><span class="svc-price price" data-inr="₹7,500" data-usd="$225" data-eur="€205">₹7,500</span></div>
+        </div>
+        <div class="tier-card feat">
+          <div class="tc-badge">Most Picked</div>
+          <div><div class="tc-name">Signature</div><div class="tc-desc">Multi-page custom build.</div></div>
+          <ul class="tc-list">
+            <li>Up to six pages</li>
+            <li>Designed from a blank file</li>
+            <li>SEO + speed pass included</li>
+            <li>Three revision rounds</li>
+          </ul>
+          <div class="tc-price"><span class="svc-from">From</span><span class="svc-price price" data-inr="₹15,000" data-usd="$425" data-eur="€390">₹15,000</span></div>
+        </div>
+        <div class="tier-card">
+          <div><div class="tc-name">Flagship</div><div class="tc-desc">Custom systems &amp; backend.</div></div>
+          <ul class="tc-list">
+            <li>Unlimited pages</li>
+            <li>Custom backend + database</li>
+            <li>Integrations &amp; admin panel</li>
+            <li>Priority support</li>
+          </ul>
+          <div class="tc-price"><span class="svc-from">From</span><span class="svc-price price" data-inr="₹32,500" data-usd="$925" data-eur="€850">₹32,500</span></div>
+        </div>
+      </div>
+
+      <div class="band-label">Specialist Builds</div>
+      <div class="svc-rows">
+        <div class="svc-row"><span class="sr-name">Online Store</span><span class="sr-desc">Full storefront, built properly.</span><span class="sr-price price" data-inr="₹20,000" data-usd="$570" data-eur="€525">₹20,000</span></div>
+        <div class="svc-row"><span class="sr-name">Website Redesign</span><span class="sr-desc">Rebuild the thing that isn't working.</span><span class="sr-price price" data-inr="₹11,000" data-usd="$315" data-eur="€290">₹11,000</span></div>
+        <div class="svc-row"><span class="sr-name">SEO &amp; Speed Tune-up</span><span class="sr-desc">Get found. Load fast.</span><span class="sr-price price" data-inr="₹4,750" data-usd="$135" data-eur="€125">₹4,750</span></div>
+        <div class="svc-row"><span class="sr-name">Site Audit</span><span class="sr-desc">Paid review of what's broken and what it'd take to fix.</span><span class="sr-price price" data-inr="₹2,250" data-usd="$65" data-eur="€60">₹2,250</span></div>
+      </div>
+
+      <div class="band-label">Add-ons</div>
+      <div class="addon-row">
+        <span class="addon"><b>Extra page</b><span class="price" data-inr="₹1,750" data-usd="$50" data-eur="€46">₹1,750</span></span>
+        <span class="addon"><b>CMS integration</b><span class="price" data-inr="₹4,000" data-usd="$115" data-eur="€105">₹4,000</span></span>
+        <span class="addon"><b>Animation pass</b><span class="price" data-inr="₹4,500" data-usd="$130" data-eur="€120">₹4,500</span></span>
+        <span class="addon"><b>Multilingual</b><span class="price" data-inr="₹6,000" data-usd="$170" data-eur="€155">₹6,000</span></span>
+        <span class="addon"><b>Rush delivery</b><span class="price">+40%</span></span>
+      </div>
+
+      <a href="tel:+919027026274" class="sales-strip">
+        <span class="ss-l">Bigger scope, or not sure where you fit?<span>We'll scope it on a call and quote it from scratch.</span></span>
+        <span class="ss-r">Talk to sales<b>+91 90270 26274</b></span>
+      </a>
+    </div>
+
+    <!-- ══ AI AGENTS ══ -->
+    <div class="svc-cat" id="cat-ai" role="tabpanel" aria-hidden="true">
+      <div class="tier-grid">
+        <div class="tier-card">
+          <div><div class="tc-name">Web Chatbot</div><div class="tc-desc">Answers on your site, 24/7.</div></div>
+          <ul class="tc-list">
+            <li>Trained on your content</li>
+            <li>Embedded on any page</li>
+            <li>Handover to a human</li>
+          </ul>
+          <div class="tc-price"><span class="svc-from">From</span><span class="svc-price price" data-inr="₹9,500" data-usd="$265" data-eur="€245">₹9,500</span></div>
+        </div>
+        <div class="tier-card feat">
+          <div class="tc-badge">Most Picked</div>
+          <div><div class="tc-name">Support Agent</div><div class="tc-desc">Handles customer queries on its own.</div></div>
+          <ul class="tc-list">
+            <li>Resolves without a human</li>
+            <li>Wired into your order data</li>
+            <li>Escalation rules you control</li>
+          </ul>
+          <div class="tc-price"><span class="svc-from">From</span><span class="svc-price price" data-inr="₹12,500" data-usd="$350" data-eur="€320">₹12,500</span></div>
+        </div>
+        <div class="tier-card">
+          <div><div class="tc-name">Voice Agent</div><div class="tc-desc">Picks up the phone and talks.</div></div>
+          <ul class="tc-list">
+            <li>Inbound or outbound calls</li>
+            <li>Real telephony number</li>
+            <li>Call transcripts &amp; logging</li>
+          </ul>
+          <div class="tc-price"><span class="svc-from">From</span><span class="svc-price price" data-inr="₹16,000" data-usd="$450" data-eur="€415">₹16,000</span></div>
+        </div>
+      </div>
+
+      <div class="band-label">Every Other Agent</div>
+      <div class="svc-rows">
+        <div class="svc-row"><span class="sr-name">Booking Agent</span><span class="sr-desc">Takes appointments straight into your calendar.</span><span class="sr-price price" data-inr="₹11,000" data-usd="$315" data-eur="€290">₹11,000</span></div>
+        <div class="svc-row"><span class="sr-name">Custom GPT Assistant</span><span class="sr-desc">A model tuned to your workflow.</span><span class="sr-price price" data-inr="₹11,000" data-usd="$315" data-eur="€290">₹11,000</span></div>
+        <div class="svc-row"><span class="sr-name">WhatsApp Agent</span><span class="sr-desc">Automated chat where India actually shops.</span><span class="sr-price price" data-inr="₹12,500" data-usd="$350" data-eur="€320">₹12,500</span></div>
+        <div class="svc-row"><span class="sr-name">Lead Qualification Agent</span><span class="sr-desc">Sorts the real enquiries from the noise.</span><span class="sr-price price" data-inr="₹12,500" data-usd="$350" data-eur="€320">₹12,500</span></div>
+        <div class="svc-row"><span class="sr-name">Knowledge Agent</span><span class="sr-desc">Answers your team's questions from your own docs.</span><span class="sr-price price" data-inr="₹12,500" data-usd="$350" data-eur="€320">₹12,500</span></div>
+        <div class="svc-row"><span class="sr-name">Workflow Automation</span><span class="sr-desc">Wire your tools to run themselves.</span><span class="sr-price price" data-inr="₹12,500" data-usd="$350" data-eur="€320">₹12,500</span></div>
+        <div class="svc-row"><span class="sr-name">Sales Outreach Agent</span><span class="sr-desc">Works a list and books the meetings.</span><span class="sr-price price" data-inr="₹14,000" data-usd="$400" data-eur="€365">₹14,000</span></div>
+      </div>
+
+      <a href="tel:+919027026274" class="sales-strip">
+        <span class="ss-l">Not sure which agent you need?<span>Describe the job and we'll tell you which one does it.</span></span>
+        <span class="ss-r">Talk to sales<b>+91 90270 26274</b></span>
+      </a>
+    </div>
+
+    <!-- ══ INTERNAL TOOLS ══ -->
+    <div class="svc-cat" id="cat-tools" role="tabpanel" aria-hidden="true">
+      <div class="tier-grid">
+        <div class="tier-card">
+          <div><div class="tc-name">Admin Panel</div><div class="tc-desc">Stop editing things in a spreadsheet.</div></div>
+          <ul class="tc-list">
+            <li>Custom CMS for your content</li>
+            <li>Roles &amp; permissions</li>
+            <li>Runs on your own data</li>
+          </ul>
+          <div class="tc-price"><span class="svc-from">From</span><span class="svc-price price" data-inr="₹14,000" data-usd="$400" data-eur="€365">₹14,000</span></div>
+        </div>
+        <div class="tier-card feat">
+          <div class="tc-badge">Most Picked</div>
+          <div><div class="tc-name">Client Portal</div><div class="tc-desc">A logged-in space for your customers.</div></div>
+          <ul class="tc-list">
+            <li>Accounts &amp; authentication</li>
+            <li>Documents, orders or bookings</li>
+            <li>Admin side included</li>
+          </ul>
+          <div class="tc-price"><span class="svc-from">From</span><span class="svc-price price" data-inr="₹22,500" data-usd="$640" data-eur="€590">₹22,500</span></div>
+        </div>
+        <div class="tier-card">
+          <div><div class="tc-name">Product &amp; MVP</div><div class="tc-desc">The first real version of your idea.</div></div>
+          <ul class="tc-list">
+            <li>Built to be shipped, not demoed</li>
+            <li>Auth, database, payments</li>
+            <li>Scoped in fortnightly cycles</li>
+          </ul>
+          <div class="tc-price"><span class="svc-from">From</span><span class="svc-price price" data-inr="₹35,000" data-usd="$1,000" data-eur="€920">₹35,000</span></div>
+        </div>
+      </div>
+
+      <div class="band-label">Individual Systems</div>
+      <div class="svc-rows">
+        <div class="svc-row"><span class="sr-name">Internal Wiki</span><span class="sr-desc">One place your team's knowledge actually lives.</span><span class="sr-price price" data-inr="₹11,000" data-usd="$315" data-eur="€290">₹11,000</span></div>
+        <div class="svc-row"><span class="sr-name">Reporting Dashboard</span><span class="sr-desc">Your numbers, without the spreadsheet ritual.</span><span class="sr-price price" data-inr="₹12,500" data-usd="$350" data-eur="€320">₹12,500</span></div>
+        <div class="svc-row"><span class="sr-name">CRM Setup &amp; Integration</span><span class="sr-desc">Leads land where your team can work them.</span><span class="sr-price price" data-inr="₹16,000" data-usd="$450" data-eur="€415">₹16,000</span></div>
+        <div class="svc-row"><span class="sr-name">Booking System</span><span class="sr-desc">Scheduling, reminders and no double bookings.</span><span class="sr-price price" data-inr="₹17,500" data-usd="$500" data-eur="€460">₹17,500</span></div>
+        <div class="svc-row"><span class="sr-name">API / Integration Layer</span><span class="sr-desc">Make two systems that hate each other talk.</span><span class="sr-price price" data-inr="₹19,000" data-usd="$540" data-eur="€495">₹19,000</span></div>
+        <div class="svc-row"><span class="sr-name">Inventory &amp; Orders</span><span class="sr-desc">Stock, fulfilment and returns in one place.</span><span class="sr-price price" data-inr="₹27,500" data-usd="$780" data-eur="€715">₹27,500</span></div>
+        <div class="svc-row"><span class="sr-name">Custom Internal System</span><span class="sr-desc">Built around how you already work.</span><span class="sr-price price" data-inr="₹30,000" data-usd="$855" data-eur="€785">₹30,000</span></div>
+      </div>
+
+      <a href="tel:+919027026274" class="sales-strip">
+        <span class="ss-l">Got a process nobody's built software for?<span>That's usually the one worth building. Let's scope it.</span></span>
+        <span class="ss-r">Talk to sales<b>+91 90270 26274</b></span>
+      </a>
+    </div>
+
+    <!-- ══ GROWTH ══ -->
+    <div class="svc-cat" id="cat-growth" role="tabpanel" aria-hidden="true">
+      <div class="tier-grid">
+        <div class="tier-card">
+          <div><div class="tc-name">Care</div><div class="tc-desc">Keeps it alive.</div></div>
+          <ul class="tc-list">
+            <li>Hosting, backups, updates</li>
+            <li>Small fixes and edits</li>
+            <li>Uptime monitoring</li>
+          </ul>
+          <div class="tc-price"><span class="svc-from">Per month</span><span class="svc-price price" data-inr="₹2,500/mo" data-usd="$70/mo" data-eur="€65/mo">₹2,500/mo</span></div>
+        </div>
+        <div class="tier-card feat">
+          <div class="tc-badge">Most Picked</div>
+          <div><div class="tc-name">Growth</div><div class="tc-desc">Makes it better every month.</div></div>
+          <ul class="tc-list">
+            <li>Everything in Care</li>
+            <li>SEO, speed and content work</li>
+            <li>New sections as you need them</li>
+            <li>Monthly report</li>
+          </ul>
+          <div class="tc-price"><span class="svc-from">Per month</span><span class="svc-price price" data-inr="₹6,000/mo" data-usd="$170/mo" data-eur="€155/mo">₹6,000/mo</span></div>
+        </div>
+        <div class="tier-card">
+          <div><div class="tc-name">Partner</div><div class="tc-desc">Studio time on tap.</div></div>
+          <ul class="tc-list">
+            <li>Everything in Growth</li>
+            <li>A block of build time monthly</li>
+            <li>Campaign pages &amp; new features</li>
+            <li>Priority in the queue</li>
+          </ul>
+          <div class="tc-price"><span class="svc-from">Per month</span><span class="svc-price price" data-inr="₹12,500/mo" data-usd="$355/mo" data-eur="€325/mo">₹12,500/mo</span></div>
+        </div>
+      </div>
+
+      <div class="band-label">One-off &amp; Subscription</div>
+      <div class="svc-rows">
+        <div class="svc-row"><span class="sr-name">Landing Page Subscription</span><span class="sr-desc">Three fresh campaign pages every month.</span><span class="sr-price price" data-inr="₹12,500/mo" data-usd="$355/mo" data-eur="€325/mo">₹12,500/mo</span></div>
+        <div class="svc-row"><span class="sr-name">CRO Sprint</span><span class="sr-desc">Audit a funnel, rebuild it, measure the lift.</span><span class="sr-price price" data-inr="₹11,000" data-usd="$315" data-eur="€290">₹11,000</span></div>
+        <div class="svc-row"><span class="sr-name">Email &amp; Automation</span><span class="sr-desc">Transactional email, flows and newsletters.</span><span class="sr-price price" data-inr="₹9,000" data-usd="$255" data-eur="€235">₹9,000</span></div>
+        <div class="svc-row"><span class="sr-name">Accessibility Audit</span><span class="sr-desc">WCAG AA review and the fixes to pass it.</span><span class="sr-price price" data-inr="₹6,000" data-usd="$170" data-eur="€155">₹6,000</span></div>
+      </div>
+
+      <a href="tel:+919027026274" class="sales-strip">
+        <span class="ss-l">Already have a site that's underperforming?<span>Start with an audit — we'll tell you if a retainer is even worth it.</span></span>
+        <span class="ss-r">Talk to sales<b>+91 90270 26274</b></span>
+      </a>
+    </div>
+
+    <!-- ══ BUNDLES ══ -->
+    <div class="svc-cat" id="cat-bundles" role="tabpanel" aria-hidden="true">
+      <div class="tier-grid">
+        <div class="tier-card bundle">
+          <div><div class="tc-name">Launch Kit</div><div class="tc-desc">Live and answering in a fortnight.</div></div>
+          <ul class="tc-list">
+            <li>Launch page</li>
+            <li>Web chatbot</li>
+            <li>Three months of Care</li>
+          </ul>
+          <div class="tc-price">
+            <span class="tc-was price" data-inr="₹24,500" data-usd="$700" data-eur="€645">₹24,500</span>
+            <span class="svc-price price" data-inr="₹21,000" data-usd="$600" data-eur="€550">₹21,000</span>
+            <span class="tc-save">You save ₹3,500</span>
+          </div>
+        </div>
+        <div class="tier-card bundle feat">
+          <div class="tc-badge">Best Value</div>
+          <div><div class="tc-name">Site + Agent</div><div class="tc-desc">A real site that handles its own enquiries.</div></div>
+          <ul class="tc-list">
+            <li>Signature website</li>
+            <li>AI support agent</li>
+            <li>Wired into each other</li>
+          </ul>
+          <div class="tc-price">
+            <span class="tc-was price" data-inr="₹27,500" data-usd="$785" data-eur="€720">₹27,500</span>
+            <span class="svc-price price" data-inr="₹23,500" data-usd="$670" data-eur="€615">₹23,500</span>
+            <span class="tc-save">You save ₹4,000</span>
+          </div>
+        </div>
+        <div class="tier-card bundle">
+          <div><div class="tc-name">Site + Growth</div><div class="tc-desc">Built, then actually looked after.</div></div>
+          <ul class="tc-list">
+            <li>Signature website</li>
+            <li>Six months of Growth</li>
+            <li>Monthly reporting</li>
+          </ul>
+          <div class="tc-price">
+            <span class="tc-was price" data-inr="₹51,000" data-usd="$1,455" data-eur="€1,340">₹51,000</span>
+            <span class="svc-price price" data-inr="₹43,500" data-usd="$1,240" data-eur="€1,140">₹43,500</span>
+            <span class="tc-save">You save ₹7,500</span>
+          </div>
+        </div>
+        <div class="tier-card bundle">
+          <div><div class="tc-name">Flagship Everything</div><div class="tc-desc">The whole system, one number.</div></div>
+          <ul class="tc-list">
+            <li>Flagship website</li>
+            <li>AI support agent</li>
+            <li>Client portal</li>
+          </ul>
+          <div class="tc-price">
+            <span class="tc-was price" data-inr="₹67,500" data-usd="$1,925" data-eur="€1,770">₹67,500</span>
+            <span class="svc-price price" data-inr="₹57,500" data-usd="$1,640" data-eur="€1,510">₹57,500</span>
+            <span class="tc-save">You save ₹10,000</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="tel:+919027026274" class="sales-strip">
+        <span class="ss-l">Want a bundle that isn't on this list?<span>Pick any services and we'll price them together.</span></span>
+        <span class="ss-r">Talk to sales<b>+91 90270 26274</b></span>
+      </a>
+    </div>
+
+    <div class="terms">
+      <div class="term"><b>Payment</b><span>50% to start, 50% on delivery. Retainers are billed monthly, cancel with 30 days' notice.</span></div>
+      <div class="term"><b>Rush delivery</b><span>+40% on any build, for delivery in half the standard timeline.</span></div>
+      <div class="term"><b>Quotes</b><span>Prices are starting points. Anything unusual gets scoped and quoted from scratch.</span></div>
+    </div>
+
+    <div class="svc-cta-row">
+      <a href="contact.html" class="btn btn-red">Start A Project →</a>
+      <a href="work.html" class="btn btn-ghost">See The Work</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div><div class="f-logo">FORTH<span>.</span>WORTH</div><div class="f-tag">We build what others can't imagine.</div></div>
+  <div class="f-right">
+    <div class="f-links"><a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="blog.html">Journal</a><a href="contact.html">Contact</a><a href="https://instagram.com/forthworth.studios" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+    <div class="f-note">© 2026 Forth Worth Studios · Delhi → Worldwide · <a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="apple-touch-icon" href="favicon.png"/>
+<title>Page Not Found — Forth Worth Studios</title>
+<meta name="description" content="That page doesn't exist. Head back to the work, the services, or start a project."/>
+<meta name="robots" content="noindex, follow"/>
+<meta name="theme-color" content="#050508"/>
+<!-- fonts are self-hosted in style.css; preload only the two that paint first -->
+<link rel="preload" as="font" type="font/woff2" href="fonts/BigShouldersDisplay-900-normal-latin.woff2" crossorigin/>
+<link rel="preload" as="font" type="font/woff2" href="fonts/Barlow-400-normal-latin.woff2" crossorigin/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  #nf{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    padding:120px max(28px,calc((100vw - 1280px)/2)) 80px;}
+  .nf-code{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(6rem,22vw,15rem);line-height:.82;
+    color:transparent;-webkit-text-stroke:2px var(--red);letter-spacing:-.02em;}
+  .nf-title{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(1.8rem,5vw,3.2rem);
+    text-transform:uppercase;line-height:1;margin-top:18px;}
+  .nf-title .red{color:var(--red);}
+  .nf-sub{font-family:var(--sub);font-weight:300;font-size:1.05rem;line-height:1.7;color:var(--muted);max-width:440px;margin:22px auto 38px;}
+  .nf-links{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+  .nf-map{margin-top:46px;display:flex;gap:26px;flex-wrap:wrap;justify-content:center;}
+  .nf-map a{font-family:'DM Mono',monospace;font-size:var(--label);letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted);border-bottom:1px solid transparent;padding-bottom:4px;transition:color var(--t1),border-color var(--t1);}
+  .nf-map a:hover{color:var(--red);border-bottom-color:var(--red);}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="Forth Worth Studios — Home"><img src="logo.png" alt="Forth Worth Studios" width="383" height="204"/></a>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="services.html">Services</a>
+    <a href="why-forthworth.html">Why ForthWorth</a>
+    <a href="about.html">About</a>
+    <a href="blog.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Let's Build</a>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="blog.html">Journal</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<main id="main">
+  <section id="nf">
+    <div class="nf-code">404</div>
+    <h1 class="nf-title">This Page Doesn't <span class="red">Exist.</span></h1>
+    <p class="nf-sub">Wrong link, old URL, or a typo. Nothing's broken on your end — the page just isn't here.</p>
+    <div class="nf-links">
+      <a href="index.html" class="btn btn-red">Back Home →</a>
+      <a href="work.html" class="btn btn-ghost">See The Work</a>
+    </div>
+    <div class="nf-map">
+      <a href="work.html">Work</a>
+      <a href="services.html">Services</a>
+      <a href="why-forthworth.html">Why ForthWorth</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div><div class="f-logo">FORTH<span>.</span>WORTH</div><div class="f-tag">We build what others can't imagine.</div></div>
+  <div class="f-right">
+    <div class="f-links"><a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="blog.html">Journal</a><a href="contact.html">Contact</a><a href="https://instagram.com/forthworth.studios" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+    <div class="f-note">© 2026 Forth Worth Studios · Delhi → Worldwide · <a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

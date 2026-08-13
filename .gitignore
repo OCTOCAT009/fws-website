@@ -1,0 +1,13 @@
+# OS cruft
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# editor / tooling
+.vscode/
+.idea/
+*.log
+
+# NOTE: _src/ is committed on purpose. Those are unedited masters (the original
+# work-bg.mp4 and full-resolution client logos) that cannot be regenerated from
+# the compressed versions shipped in the site root.
