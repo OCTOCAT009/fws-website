@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="apple-touch-icon" href="favicon.png"/>
+<title>Client Portal — Live Demo | Forth Worth Studios</title>
+<meta name="description" content="A working demo of the client back office we build — mailing list, visual email builder, batched sending and an in-browser content editor. Sample data, nothing is sent."/>
+<!-- not linked from anywhere and not in the sitemap yet; keep it out of search
+     until it is reviewed and deliberately published -->
+<meta name="robots" content="noindex, nofollow"/>
+<meta name="theme-color" content="#050508"/>
+<link rel="preload" as="font" type="font/woff2" href="fonts/BigShouldersDisplay-900-normal-latin.woff2" crossorigin/>
+<link rel="preload" as="font" type="font/woff2" href="fonts/Barlow-400-normal-latin.woff2" crossorigin/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+/* ══════════════════════════════════════════════════════════════════════
+   DEMO PORTAL — entirely self-contained.
+   Nothing here is added to style.css or app.js, so this page cannot affect
+   any other page on the site. There is not a single network call in it:
+   every button mutates an in-memory object and re-renders. It physically
+   cannot send an email or reach an API.
+   ══════════════════════════════════════════════════════════════════════ */
+#dp-hero{padding:132px 0 26px;}
+#dp-hero .lead{font-family:var(--sub);font-weight:300;font-size:clamp(1.02rem,2vw,1.28rem);
+  color:var(--muted);max-width:660px;margin-top:22px;line-height:1.65;}
+
+/* the honesty bar — always visible, never dismissible */
+.dp-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  margin-top:34px;padding:13px 18px;background:rgba(204,42,30,.09);
+  border:1px solid rgba(204,42,30,.34);}
+.dp-bar .dp-bar-t{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--red-text);}
+.dp-bar .dp-bar-t b{color:var(--white);font-weight:400;}
+.dp-reset{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.16em;
+  text-transform:uppercase;background:none;border:1px solid var(--line);color:var(--muted);
+  padding:9px 15px;cursor:pointer;transition:color var(--t1) var(--e),border-color var(--t1) var(--e);}
+.dp-reset:hover{color:var(--white);border-color:var(--white);}
+
+/* shell */
+.dp-shell{display:grid;grid-template-columns:216px 1fr;gap:2px;background:var(--line);
+  border:1px solid var(--line);margin-top:2px;min-height:600px;}
+.dp-side{background:#08080c;padding:22px 0;}
+.dp-side-h{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.22em;
+  text-transform:uppercase;color:var(--quiet);padding:0 20px 14px;}
+.dp-nav{display:flex;flex-direction:column;}
+.dp-nav button{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:none;border:none;border-left:2px solid transparent;cursor:pointer;text-align:left;
+  padding:12px 20px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--muted);
+  transition:color var(--t1) var(--e),background var(--t1) var(--e),border-color var(--t1) var(--e);}
+.dp-nav button:hover{color:var(--white);background:#0d0d14;}
+.dp-nav button[aria-selected="true"]{color:var(--white);background:#0d0d14;border-left-color:var(--red);}
+.dp-pill{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:var(--quiet);
+  border:1px solid var(--line);padding:2px 7px;}
+.dp-main{background:#06060a;padding:28px 26px 34px;min-width:0;}
+.dp-head{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:24px;}
+.dp-head h2{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:1.9rem;
+  line-height:1;text-transform:uppercase;color:var(--white);}
+.dp-head p{font-family:var(--sub);font-weight:300;font-size:.92rem;color:var(--muted);margin-top:8px;}
+.dp-view{display:none;}
+.dp-view.on{display:block;}
+
+/* overview */
+.dp-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;
+  background:var(--line);border:1px solid var(--line);}
+.dp-kpi{background:#08080c;padding:20px 18px;}
+.dp-kpi b{display:block;font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  font-size:2.1rem;line-height:1;color:var(--red);}
+.dp-kpi span{display:block;font-family:'DM Mono',monospace;font-size:var(--label-sm);
+  letter-spacing:.18em;text-transform:uppercase;color:var(--quiet);margin-top:9px;}
+.dp-sub-h{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.24em;
+  text-transform:uppercase;color:var(--quiet);margin:30px 0 12px;}
+.dp-feed{display:flex;flex-direction:column;}
+.dp-feed div{display:flex;gap:14px;align-items:baseline;padding:11px 2px;border-bottom:1px solid var(--line);
+  font-family:'Barlow',sans-serif;font-weight:300;font-size:.88rem;color:var(--muted);}
+.dp-feed time{font-family:'DM Mono',monospace;font-size:var(--label-sm);color:var(--quiet);
+  white-space:nowrap;min-width:104px;}
+
+/* generic controls */
+.dp-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px;}
+.dp-in,.dp-sel,.dp-ta{background:#0a0a10;border:1px solid var(--line);color:var(--white);
+  font-family:'Barlow',sans-serif;font-weight:300;font-size:.92rem;padding:11px 13px;width:100%;
+  transition:border-color var(--t1) var(--e);}
+.dp-in:focus,.dp-sel:focus,.dp-ta:focus{outline:none;border-color:var(--red);}
+.dp-ta{min-height:74px;resize:vertical;line-height:1.6;}
+.dp-lab{display:block;font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--quiet);margin-bottom:7px;}
+.dp-btn{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.18em;
+  text-transform:uppercase;background:var(--red);color:var(--black);border:none;padding:12px 20px;
+  cursor:pointer;transition:background var(--t1) var(--e),transform var(--t1) var(--e);}
+.dp-btn:hover:not(:disabled){background:var(--red-dark);transform:translateY(-1px);}
+.dp-btn:disabled{opacity:.4;cursor:default;}
+.dp-btn.ghost{background:none;border:1px solid var(--line);color:var(--muted);}
+.dp-btn.ghost:hover:not(:disabled){color:var(--white);border-color:var(--white);background:none;}
+.dp-btn.mini{padding:6px 10px;font-size:.58rem;}
+
+/* composer */
+.dp-split{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:900px){ .dp-split{grid-template-columns:1fr;} }
+.dp-block{background:#0a0a10;border:1px solid var(--line);padding:13px;margin-bottom:8px;}
+.dp-block-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px;}
+.dp-block-type{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--quiet);}
+.dp-block-acts{display:flex;gap:4px;}
+.dp-block-acts button{background:none;border:1px solid var(--line);color:var(--muted);cursor:pointer;
+  width:26px;height:26px;font-size:.75rem;line-height:1;transition:color var(--t1) var(--e),border-color var(--t1) var(--e);}
+.dp-block-acts button:hover{color:var(--red);border-color:var(--red);}
+.dp-add{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;}
+
+/* email preview — deliberately light, like a real inbox */
+.dp-prev-wrap{background:#0a0a10;border:1px solid var(--line);padding:14px;}
+.dp-prev{background:#f4f4f2;color:#14141a;padding:26px 22px;min-height:280px;font-family:'Barlow',sans-serif;}
+.dp-prev .pv-sub{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;
+  letter-spacing:.02em;border-bottom:1px solid #d8d8d4;padding-bottom:12px;margin-bottom:18px;color:#14141a;}
+.dp-prev h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;
+  margin:16px 0 8px;color:#14141a;line-height:1.15;}
+.dp-prev p{font-size:.92rem;line-height:1.7;margin:0 0 12px;color:#3a3a44;}
+.dp-prev .pv-btn{display:inline-block;background:#cc2a1e;color:#fff;padding:11px 20px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.88rem;}
+.dp-prev hr{border:none;border-top:1px solid #d8d8d4;margin:18px 0;}
+.dp-prev .pv-foot{font-size:.72rem;color:#7a7a84;margin-top:22px;border-top:1px solid #d8d8d4;padding-top:12px;}
+
+/* send progress */
+.dp-send{margin-top:16px;background:#0a0a10;border:1px solid var(--line);padding:16px;}
+.dp-track{height:10px;background:#141420;border:1px solid var(--line);overflow:hidden;margin:12px 0 10px;}
+.dp-fill{height:100%;width:0;background:linear-gradient(90deg,var(--red),#6f1710);transition:width .2s linear;}
+.dp-send-t{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.14em;color:var(--muted);line-height:1.8;}
+.dp-send-t b{color:var(--white);font-weight:400;}
+.dp-note{font-family:'Barlow',sans-serif;font-weight:300;font-size:.84rem;line-height:1.6;
+  color:var(--quiet);margin-top:10px;}
+.dp-warn{border-color:rgba(204,42,30,.4)!important;background:rgba(204,42,30,.07)!important;}
+
+/* content editor */
+.dp-field{display:grid;grid-template-columns:190px 1fr;gap:14px;align-items:start;
+  padding:13px 2px;border-bottom:1px solid var(--line);}
+@media(max-width:760px){ .dp-field{grid-template-columns:1fr;gap:7px;} }
+.dp-field-k{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.12em;color:var(--quiet);padding-top:11px;}
+.dp-field-k em{display:block;font-style:normal;color:var(--muted);margin-top:4px;text-transform:none;letter-spacing:0;font-family:'Barlow',sans-serif;font-size:.8rem;}
+.dp-edited{display:inline-block;font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#8fdd97;border:1px solid rgba(143,221,151,.4);padding:2px 6px;margin-left:8px;}
+
+/* history */
+.dp-tbl{width:100%;border-collapse:collapse;}
+.dp-tbl th{text-align:left;font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--quiet);font-weight:400;padding:10px 12px;border-bottom:1px solid var(--line);}
+.dp-tbl td{padding:13px 12px;border-bottom:1px solid var(--line);font-family:'Barlow',sans-serif;
+  font-weight:300;font-size:.89rem;color:var(--muted);vertical-align:top;}
+.dp-tbl td b{color:var(--white);font-weight:400;font-family:'Barlow Condensed',sans-serif;
+  font-size:1rem;letter-spacing:.03em;}
+.dp-tag{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:3px 8px;border:1px solid var(--line);color:var(--quiet);white-space:nowrap;}
+.dp-tag.ok{color:#8fdd97;border-color:rgba(143,221,151,.4);}
+.dp-tag.warn{color:#e8c46a;border-color:rgba(232,196,106,.4);}
+.dp-detail{font-family:'Barlow',sans-serif;font-weight:300;font-size:.83rem;color:var(--quiet);
+  line-height:1.7;padding:0 12px 14px;border-bottom:1px solid var(--line);}
+.dp-rowbtn{background:none;border:none;color:inherit;font:inherit;cursor:pointer;text-align:left;padding:0;}
+
+/* toast */
+.dp-toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(14px);
+  background:#0d0d14;border:1px solid rgba(143,221,151,.45);color:#8fdd97;
+  font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.14em;text-transform:uppercase;
+  padding:13px 22px;z-index:900;opacity:0;pointer-events:none;
+  transition:opacity var(--t2) var(--e),transform var(--t2) var(--e);}
+.dp-toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+
+@media(max-width:820px){
+  .dp-shell{grid-template-columns:1fr;}
+  .dp-side{padding:14px 0;}
+  .dp-nav{flex-direction:row;overflow-x:auto;}
+  .dp-nav button{border-left:none;border-bottom:2px solid transparent;white-space:nowrap;}
+  .dp-nav button[aria-selected="true"]{border-left-color:transparent;border-bottom-color:var(--red);}
+  .dp-side-h{display:none;}
+}
+@media(prefers-reduced-motion:reduce){ .dp-fill{transition:none;} }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<div id="loader"><div class="lname">Forth<span style="color:#000">.</span>Worth</div><video src="loader.mp4" muted playsinline autoplay loop></video><div class="lz">Loading</div></div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="Forth Worth Studios — Home"><img src="logo.png" alt="Forth Worth Studios" width="383" height="204"/></a>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="services.html">Services</a>
+    <a href="why-forthworth.html">Why ForthWorth</a>
+    <a href="about.html">About</a>
+    <a href="demo-portal.html" class="active">Demo</a>
+    <a href="blog.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Let's Build</a>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="demo-portal.html">Demo</a><a href="blog.html">Journal</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<main id="main" class="wrap">
+  <section id="dp-hero">
+    <div class="eyebrow">Live Demo</div>
+    <h1 class="s-title">The Back <span class="red">Office.</span></h1>
+    <p class="lead">A working demo of the client portal we build — a mailing list you own, a visual email
+      builder, batched sending that survives a daily cap, and an editor for the words on your live site.
+      Click anything. It all works.</p>
+
+    <div class="dp-bar">
+      <span class="dp-bar-t">Demo · <b>sample data</b> · nothing is sent, nothing is saved</span>
+      <button class="dp-reset" id="dpReset">↺ Reset demo</button>
+    </div>
+
+    <div class="dp-shell">
+      <div class="dp-side">
+        <div class="dp-side-h">Portal</div>
+        <div class="dp-nav" role="tablist" aria-label="Portal sections">
+          <button role="tab" aria-selected="true"  data-v="overview">Overview</button>
+          <button role="tab" aria-selected="false" data-v="send">Send Email</button>
+          <button role="tab" aria-selected="false" data-v="content">Content <span class="dp-pill" id="pillEdits">0</span></button>
+          <button role="tab" aria-selected="false" data-v="history">History</button>
+        </div>
+      </div>
+
+      <div class="dp-main">
+        <div class="dp-head">
+          <h2 id="dpTitle">Overview</h2>
+          <p id="dpSub">How the site is doing.</p>
+        </div>
+
+        <!-- ── OVERVIEW ── -->
+        <div class="dp-view on" id="v-overview">
+          <div class="dp-kpis">
+            <div class="dp-kpi"><b id="kSubs">520</b><span>Subscribers</span></div>
+            <div class="dp-kpi"><b id="kSent">1,842</b><span>Emails delivered</span></div>
+            <div class="dp-kpi"><b id="kCamp">4</b><span>Campaigns</span></div>
+            <div class="dp-kpi"><b id="kEdits">0</b><span>Content edits</span></div>
+          </div>
+          <div class="dp-sub-h">Recent activity</div>
+          <div class="dp-feed" id="feed"></div>
+          <p class="dp-note">Every number on this screen is invented for the demo. In a real install these
+            come from your own database — first-party counts only, no third-party tracker, no cookie banner.</p>
+        </div>
+
+        <!-- ── SEND EMAIL ── -->
+        <div class="dp-view" id="v-send">
+          <div class="dp-split">
+            <div>
+              <div class="dp-row" style="display:block;">
+                <label class="dp-lab" for="cSub">Subject</label>
+                <input class="dp-in" id="cSub" value="Monthly market notes — August"/>
+              </div>
+              <div class="dp-row" style="display:block;">
+                <label class="dp-lab" for="cAud">Audience</label>
+                <select class="dp-sel" id="cAud">
+                  <option>All subscribers — 520</option>
+                  <option>Active in last 90 days — 384</option>
+                  <option>Never opened — 66</option>
+                </select>
+              </div>
+              <div class="dp-lab" style="margin-top:18px;">Blocks</div>
+              <div id="blocks"></div>
+              <div class="dp-add">
+                <button class="dp-btn ghost mini" data-add="heading">+ Heading</button>
+                <button class="dp-btn ghost mini" data-add="text">+ Text</button>
+                <button class="dp-btn ghost mini" data-add="button">+ Button</button>
+                <button class="dp-btn ghost mini" data-add="divider">+ Divider</button>
+              </div>
+              <div class="dp-row" style="margin-top:20px;">
+                <button class="dp-btn ghost" id="bTest">Send test to myself</button>
+                <button class="dp-btn" id="bSend">Send to 520 →</button>
+              </div>
+              <div id="sendBox"></div>
+            </div>
+            <div>
+              <div class="dp-lab">Live preview</div>
+              <div class="dp-prev-wrap">
+                <div class="dp-prev" id="prev"></div>
+              </div>
+              <p class="dp-note">Each recipient gets an individually addressed message with its own
+                one-click unsubscribe header. There is no BCC anywhere in the real system, which is
+                most of why it reaches inboxes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CONTENT ── -->
+        <div class="dp-view" id="v-content">
+          <div class="dp-row">
+            <select class="dp-sel" id="cPage" style="max-width:210px;">
+              <option value="home">Home</option>
+              <option value="about">About</option>
+              <option value="publications">Publications</option>
+              <option value="contact">Contact</option>
+            </select>
+            <input class="dp-in" id="cSearch" placeholder="Search fields…" style="max-width:230px;"/>
+            <button class="dp-btn ghost" id="cOnly" aria-pressed="false">Only edited</button>
+            <button class="dp-btn" id="cSave">Save changes</button>
+          </div>
+          <div id="fields"></div>
+          <p class="dp-note">The client edits the words on their live site without touching code and
+            without a page builder. Fields are defined by us, so nobody can accidentally break a layout.</p>
+        </div>
+
+        <!-- ── HISTORY ── -->
+        <div class="dp-view" id="v-history">
+          <table class="dp-tbl">
+            <thead><tr><th>Campaign</th><th>Sent</th><th>Recipients</th><th>Status</th></tr></thead>
+            <tbody id="hist"></tbody>
+          </table>
+          <p class="dp-note">The second row is the interesting one. Gmail allows roughly 500 recipients a
+            day on a free account; the job parks itself at the cap and a scheduled function resumes it the
+            next morning, so a long list never fails — it just takes two days.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="post-cta" style="margin-top:40px;">
+      <b>This is a real system, rebuilt as a demo</b>
+      <p>We built the original for Chanakya FIC — a student finance society at Delhi University who needed a
+        mailing list they owned and a site their committee could edit. This page is a restyled, offline
+        replica of that back office: same ideas, sample data, no connection to anything.</p>
+      <a href="case-chanakya.html" class="btn btn-red">Read the case study →</a>
+      <a href="services.html" class="btn btn-ghost" style="margin-left:10px;">Client portals from ₹22,500</a>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <div class="f-cols">
+    <div class="f-col"><b>What We Build</b>
+      <a href="animated-websites.html">Animated Websites</a>
+      <a href="interactive-websites.html">Interactive &amp; Immersive</a>
+      <a href="custom-web-development.html">Custom Web Development</a>
+      <a href="services.html">AI Agents &amp; Internal Tools</a>
+      <a href="demo-portal.html">Client portal demo</a>
+    </div>
+    <div class="f-col"><b>Who We Build For</b>
+      <a href="fashion-website-design.html">Fashion &amp; Streetwear</a>
+      <a href="portfolio-website-design.html">Portfolios &amp; Creatives</a>
+      <a href="work.html">All Work</a>
+    </div>
+    <div class="f-col"><b>Case Studies</b>
+      <a href="case-turiya.html">Turiya</a>
+      <a href="case-streeterror.html">Street Error</a>
+      <a href="case-onlyreesh.html">Onlyreesh</a>
+      <a href="case-resentening.html">Resentening</a>
+      <a href="case-chanakya.html">Chanakya FIC</a>
+    </div>
+    <div class="f-col"><b>Where We Work</b>
+      <a href="web-design-india.html">India</a>
+      <a href="web-design-delhi.html">Delhi NCR</a>
+      <a href="web-design-dubai.html">Dubai &amp; UAE</a>
+      <a href="web-design-london.html">London &amp; UK</a>
+      <a href="web-design-new-york.html">New York &amp; US</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div><div class="f-logo">FORTH<span>.</span>WORTH</div><div class="f-tag">We build what others can't imagine.</div></div>
+  <div class="f-right">
+    <div class="f-links"><a href="work.html">Work</a><a href="services.html">Services</a><a href="why-forthworth.html">Why ForthWorth</a><a href="about.html">About</a><a href="demo-portal.html">Demo</a><a href="blog.html">Journal</a><a href="contact.html">Contact</a><a href="https://instagram.com/forthworth.studios" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+    <div class="f-note">© 2026 Forth Worth Studios · Delhi → Worldwide · <a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+
+<div class="dp-toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+<script>
+/* ══════════════════════════════════════════════════════════════════════
+   Demo state. Everything lives in these objects; nothing is fetched and
+   nothing is persisted. Reload or hit Reset and it returns to this.
+   ══════════════════════════════════════════════════════════════════════ */
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var SEED = {
+    blocks: [
+      { t: 'heading', v: 'What moved this month' },
+      { t: 'text',    v: 'Three things worth your attention: the rate decision, a quiet change in FDI rules, and why the rupee did not do what everyone expected.' },
+      { t: 'button',  v: 'Read the full note' },
+      { t: 'divider', v: '' },
+      { t: 'text',    v: 'Written by undergraduates, held to a professional standard.' }
+    ],
+    pages: {
+      home: [
+        ['hero.title',   'Main headline',        "India's markets, decoded by its students."],
+        ['hero.sub',     'Sub-heading',          'Equity research and macro explainers, published by the Cell.'],
+        ['hero.cta',     'Button label',         'Read the research'],
+        ['band.note',    'Strip under the hero', 'Est. 2020 · University of Delhi']
+      ],
+      about: [
+        ['about.lede',   'Opening paragraph',    'We are a student-run finance and investment cell.'],
+        ['about.body',   'Body copy',            'Members research, write and publish under editorial review.'],
+        ['about.join',   'Join prompt',          'Applications open twice a year.']
+      ],
+      publications: [
+        ['pubs.title',   'Section heading',      'Research'],
+        ['pubs.sub',     'Section sub-heading',  'Equity notes, macro explainers and market wraps.'],
+        ['pubs.empty',   'Empty state',          'Nothing published yet — check back shortly.']
+      ],
+      contact: [
+        ['ct.title',     'Heading',              'Get in touch'],
+        ['ct.email',     'Public email',         'hello@example.org'],
+        ['ct.note',      'Note under the form',  'We reply within two working days.']
+      ]
+    },
+    history: [
+      ['Inflation, explained', '2 Aug 2026', 512, 'ok',   'Delivered',
+       'Sent in 43 batches of 12. No failures. 4 unsubscribes, all honoured immediately and flagged so a future import cannot re-add them.'],
+      ['July market wrap', '19 Jul 2026', 508, 'warn', 'Paused at cap, resumed',
+       'Hit the 400/day Gmail allowance after 34 batches. The job parked itself and the scheduled resume finished the remaining 108 at 08:30 the next morning. Nobody had to do anything.'],
+      ['Welcome — automatic', 'Ongoing', 61, 'ok', 'Delivered',
+       'Fires once when someone subscribes. 61 sent since the list opened.'],
+      ['A note on the FTA', '28 Jun 2026', 486, 'ok', 'Delivered',
+       'Second send attempt was refused — the campaign fingerprint matched one from 6 hours earlier. Override was available but not used.']
+    ],
+    feed: [
+      ['2 min ago',  'Priya S. subscribed from the publications page'],
+      ['1 hr ago',   'Content edited — Home · Main headline'],
+      ['Yesterday',  '“Inflation, explained” delivered to 512 recipients'],
+      ['2 days ago', '4 unsubscribes processed and flagged'],
+      ['3 days ago', 'October wrap PDF downloaded 37 times']
+    ]
+  };
+
+  var S;
+  function reset() {
+    S = {
+      blocks: SEED.blocks.map(function (b) { return { t: b.t, v: b.v }; }),
+      values: {},
+      edited: {},
+      sentThisSession: false,
+      sending: false
+    };
+    Object.keys(SEED.pages).forEach(function (p) {
+      SEED.pages[p].forEach(function (f) { S.values[f[0]] = f[2]; });
+    });
+  }
+
+  function toast(msg) {
+    var t = $('toast');
+    t.textContent = msg;
+    t.classList.add('on');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { t.classList.remove('on'); }, 2600);
+  }
+
+  /* ── view switching ── */
+  var TITLES = {
+    overview: ['Overview', 'How the site is doing.'],
+    send:     ['Send Email', 'Compose and send to the list.'],
+    content:  ['Content', 'The words on the live website.'],
+    history:  ['Email History', 'What has gone out, and how it went.']
+  };
+  document.querySelectorAll('.dp-nav button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.dataset.v;
+      document.querySelectorAll('.dp-nav button').forEach(function (x) {
+        x.setAttribute('aria-selected', String(x === b));
+      });
+      document.querySelectorAll('.dp-view').forEach(function (x) {
+        x.classList.toggle('on', x.id === 'v-' + v);
+      });
+      $('dpTitle').textContent = TITLES[v][0];
+      $('dpSub').textContent = TITLES[v][1];
+    });
+  });
+
+  /* ── composer ── */
+  var LABEL = { heading: 'Heading', text: 'Text', button: 'Button', divider: 'Divider' };
+
+  function renderBlocks() {
+    var host = $('blocks');
+    host.innerHTML = '';
+    S.blocks.forEach(function (b, i) {
+      var d = document.createElement('div');
+      d.className = 'dp-block';
+      var editor = b.t === 'divider'
+        ? '<div class="dp-note" style="margin:0;">A horizontal rule. Nothing to edit.</div>'
+        : (b.t === 'text'
+            ? '<textarea class="dp-ta" data-i="' + i + '">' + esc(b.v) + '</textarea>'
+            : '<input class="dp-in" data-i="' + i + '" value="' + esc(b.v) + '"/>');
+      d.innerHTML =
+        '<div class="dp-block-top"><span class="dp-block-type">' + LABEL[b.t] + '</span>' +
+        '<span class="dp-block-acts">' +
+          '<button data-up="' + i + '" aria-label="Move up">↑</button>' +
+          '<button data-dn="' + i + '" aria-label="Move down">↓</button>' +
+          '<button data-rm="' + i + '" aria-label="Remove block">✕</button>' +
+        '</span></div>' + editor;
+      host.appendChild(d);
+    });
+    renderPrev();
+  }
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function renderPrev() {
+    var h = '<div class="pv-sub">' + esc($('cSub').value || '(no subject)') + '</div>';
+    S.blocks.forEach(function (b) {
+      if (b.t === 'heading') h += '<h3>' + esc(b.v) + '</h3>';
+      else if (b.t === 'text') h += '<p>' + esc(b.v) + '</p>';
+      else if (b.t === 'button') h += '<p><span class="pv-btn">' + esc(b.v) + '</span></p>';
+      else h += '<hr/>';
+    });
+    h += '<div class="pv-foot">You are receiving this because you subscribed.<br/>' +
+         'Unsubscribe — one click, no login, honoured immediately.</div>';
+    $('prev').innerHTML = h;
+  }
+
+  $('blocks').addEventListener('input', function (e) {
+    var i = e.target.dataset.i;
+    if (i !== undefined) { S.blocks[+i].v = e.target.value; renderPrev(); }
+  });
+  $('blocks').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var i;
+    if ((i = b.dataset.up) !== undefined && +i > 0) {
+      i = +i; var t = S.blocks[i - 1]; S.blocks[i - 1] = S.blocks[i]; S.blocks[i] = t;
+    } else if ((i = b.dataset.dn) !== undefined && +i < S.blocks.length - 1) {
+      i = +i; var t2 = S.blocks[i + 1]; S.blocks[i + 1] = S.blocks[i]; S.blocks[i] = t2;
+    } else if ((i = b.dataset.rm) !== undefined) {
+      S.blocks.splice(+i, 1);
+    } else return;
+    renderBlocks();
+  });
+  document.querySelectorAll('[data-add]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = b.dataset.add;
+      S.blocks.push({ t: t, v: t === 'heading' ? 'New heading'
+                            : t === 'text' ? 'New paragraph.'
+                            : t === 'button' ? 'Click here' : '' });
+      renderBlocks();
+    });
+  });
+  $('cSub').addEventListener('input', renderPrev);
+  $('bTest').addEventListener('click', function () {
+    toast('Demo — no test email was sent');
+  });
+
+  /* ── the send simulation: batches of 12, parks at the 400/day cap ── */
+  var TOTAL = 520, BATCH = 12, CAP = 400;
+
+  $('bSend').addEventListener('click', function () {
+    if (S.sending) return;
+    if (S.sentThisSession) {
+      $('sendBox').innerHTML =
+        '<div class="dp-send dp-warn"><div class="dp-send-t"><b>Refused — duplicate campaign.</b><br/>' +
+        'This subject and body were already sent in the last 24 hours. The real system fingerprints ' +
+        'every campaign to stop a double-send, with an explicit override if you mean it.</div>' +
+        '<div style="margin-top:12px;"><button class="dp-btn ghost mini" id="bOverride">Send it a second time anyway</button></div></div>';
+      $('bOverride').addEventListener('click', function () { S.sentThisSession = false; run(); });
+      return;
+    }
+    run();
+  });
+
+  function run() {
+    S.sending = true;
+    $('bSend').disabled = true;
+    // capped: the cap must fire exactly once. Without it, `sent >= CAP` stays
+    // true for every later batch and Resume immediately re-pauses — the send
+    // could never finish.
+    var sent = 0, paused = false, capped = false;
+    var box = $('sendBox');
+    box.innerHTML = '<div class="dp-send"><div class="dp-send-t" id="sTxt"></div>' +
+                    '<div class="dp-track"><div class="dp-fill" id="sFill"></div></div>' +
+                    '<div id="sExtra"></div></div>';
+
+    function paint() {
+      $('sFill').style.width = (sent / TOTAL * 100) + '%';
+      $('sTxt').innerHTML = '<b>' + sent + ' of ' + TOTAL + '</b> · batch ' +
+        Math.ceil(sent / BATCH) + ' of ' + Math.ceil(TOTAL / BATCH) + ' · 12 per batch';
+    }
+
+    function step() {
+      if (paused) return;
+      sent = Math.min(sent + BATCH, TOTAL);
+      paint();
+      if (!capped && sent >= CAP && sent < TOTAL) {
+        capped = true;
+        paused = true;
+        $('sExtra').innerHTML =
+          '<div class="dp-note" style="color:#e8c46a;">Daily allowance reached at ' + CAP + '. ' +
+          'The job has parked itself. A scheduled function resumes it tomorrow morning — nobody has to ' +
+          'remember to do anything.</div>' +
+          '<div style="margin-top:10px;"><button class="dp-btn ghost mini" id="bResume">Skip ahead to tomorrow</button></div>';
+        $('bResume').addEventListener('click', function () {
+          $('sExtra').innerHTML = '';
+          paused = false;
+          tick();
+        });
+        return;
+      }
+      if (sent >= TOTAL) {
+        S.sending = false;
+        S.sentThisSession = true;
+        $('bSend').disabled = false;
+        $('sExtra').innerHTML =
+          '<div class="dp-note" style="color:#8fdd97;">Finished — ' + TOTAL + ' individually addressed ' +
+          'messages, each with its own unsubscribe header.</div>' +
+          '<div class="dp-note"><b style="color:var(--white);">Nothing was actually sent.</b> This page ' +
+          'makes no network requests at all — the whole thing runs in your browser.</div>';
+        return;
+      }
+      tick();
+    }
+    function tick() { setTimeout(step, reduce ? 0 : 90); }
+    paint(); tick();
+  }
+
+  /* ── content editor ── */
+  function renderFields() {
+    var page = $('cPage').value;
+    var q = $('cSearch').value.trim().toLowerCase();
+    var onlyEdited = $('cOnly').getAttribute('aria-pressed') === 'true';
+    var host = $('fields');
+    host.innerHTML = '';
+    var shown = 0;
+    SEED.pages[page].forEach(function (f) {
+      var key = f[0], label = f[1];
+      if (onlyEdited && !S.edited[key]) return;
+      if (q && (key + ' ' + label + ' ' + S.values[key]).toLowerCase().indexOf(q) < 0) return;
+      shown++;
+      var d = document.createElement('div');
+      d.className = 'dp-field';
+      d.innerHTML =
+        '<div class="dp-field-k">' + esc(key) +
+          (S.edited[key] ? '<span class="dp-edited">edited</span>' : '') +
+          '<em>' + esc(label) + '</em></div>' +
+        '<div><textarea class="dp-ta" data-k="' + key + '" style="min-height:56px;">' +
+          esc(S.values[key]) + '</textarea></div>';
+      host.appendChild(d);
+    });
+    if (!shown) host.innerHTML = '<p class="dp-note">Nothing matches that filter.</p>';
+    $('pillEdits').textContent = Object.keys(S.edited).length;
+    $('kEdits').textContent = Object.keys(S.edited).length;
+  }
+  $('fields').addEventListener('input', function (e) {
+    var k = e.target.dataset.k;
+    if (!k) return;
+    S.values[k] = e.target.value;
+    S.edited[k] = true;
+    $('pillEdits').textContent = Object.keys(S.edited).length;
+    $('kEdits').textContent = Object.keys(S.edited).length;
+  });
+  $('cPage').addEventListener('change', renderFields);
+  $('cSearch').addEventListener('input', renderFields);
+  $('cOnly').addEventListener('click', function () {
+    var on = $('cOnly').getAttribute('aria-pressed') === 'true';
+    $('cOnly').setAttribute('aria-pressed', String(!on));
+    $('cOnly').style.borderColor = !on ? 'var(--red)' : '';
+    $('cOnly').style.color = !on ? 'var(--red)' : '';
+    renderFields();
+  });
+  $('cSave').addEventListener('click', function () {
+    var n = Object.keys(S.edited).length;
+    toast(n ? 'Demo — ' + n + ' field' + (n > 1 ? 's' : '') + ' would be published' : 'Nothing changed yet');
+    renderFields();
+  });
+
+  /* ── history ── */
+  function renderHistory() {
+    var b = $('hist');
+    b.innerHTML = '';
+    SEED.history.forEach(function (h, i) {
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td><button class="dp-rowbtn" data-h="' + i + '" aria-expanded="false"><b>' + esc(h[0]) +
+        '</b><br/><span style="font-size:.78rem;">Details ▾</span></button></td>' +
+        '<td>' + esc(h[1]) + '</td><td>' + h[2] + '</td>' +
+        '<td><span class="dp-tag ' + h[3] + '">' + esc(h[4]) + '</span></td>';
+      b.appendChild(tr);
+      var d = document.createElement('tr');
+      d.style.display = 'none';
+      d.innerHTML = '<td colspan="4" class="dp-detail">' + esc(h[5]) + '</td>';
+      b.appendChild(d);
+    });
+  }
+  $('hist').addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-h]'); if (!btn) return;
+    var row = btn.closest('tr'), det = row.nextElementSibling;
+    var open = det.style.display !== 'none';
+    det.style.display = open ? 'none' : '';
+    btn.setAttribute('aria-expanded', String(!open));
+  });
+
+  function renderFeed() {
+    $('feed').innerHTML = SEED.feed.map(function (f) {
+      return '<div><time>' + esc(f[0]) + '</time><span>' + esc(f[1]) + '</span></div>';
+    }).join('');
+  }
+
+  function renderAll() {
+    renderBlocks(); renderFields(); renderHistory(); renderFeed();
+    $('sendBox').innerHTML = '';
+    $('bSend').disabled = false;
+  }
+
+  $('dpReset').addEventListener('click', function () {
+    reset();
+    $('cSub').value = 'Monthly market notes — August';
+    $('cSearch').value = '';
+    $('cOnly').setAttribute('aria-pressed', 'false');
+    $('cOnly').style.borderColor = ''; $('cOnly').style.color = '';
+    renderAll();
+    toast('Demo reset');
+  });
+
+  reset();
+  renderAll();
+})();
+</script>
+</body>
+</html>
