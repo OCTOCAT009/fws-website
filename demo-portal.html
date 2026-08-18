@@ -5,12 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="icon" type="image/png" href="favicon.png"/>
 <link rel="apple-touch-icon" href="favicon.png"/>
-<title>Client Portal — Live Demo | Forth Worth Studios</title>
-<meta name="description" content="A working demo of the client back office we build — mailing list, visual email builder, batched sending and an in-browser content editor. Sample data, nothing is sent."/>
-<!-- not linked from anywhere and not in the sitemap yet; keep it out of search
-     until it is reviewed and deliberately published -->
-<meta name="robots" content="noindex, nofollow"/>
+<title>Command Center — Live Demo | Forth Worth Studios</title>
+<meta name="description" content="A working demo of the systems Forth Worth Studios builds — client back office, a free site audit, a client project view, and the internal ops board. Sample data, nothing is sent."/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
+<link rel="canonical" href="https://forthworthstudios.space/demo-portal.html"/>
 <meta name="theme-color" content="#050508"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Forth Worth Studios"/>
+<meta property="og:title" content="Command Center — Live Interactive Demo | Forth Worth Studios"/>
+<meta property="og:description" content="Click through the systems we build — client back office, a free site audit, a client project view, and the internal ops board. Sample data, nothing is sent."/>
+<meta property="og:url" content="https://forthworthstudios.space/demo-portal.html"/>
+<meta property="og:image" content="https://forthworthstudios.space/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://forthworthstudios.space/og-image.png"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Command Center Demo","applicationCategory":"BusinessApplication","operatingSystem":"Any modern browser","url":"https://forthworthstudios.space/demo-portal.html","description":"An interactive demo of the systems built by Forth Worth Studios — client back office, site audit, client project view and internal ops board.","offers":{"@type":"Offer","price":"11000","priceCurrency":"INR"},"creator":{"@type":"Organization","name":"Forth Worth Studios","url":"https://forthworthstudios.space/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://forthworthstudios.space/"},{"@type":"ListItem","position":2,"name":"Command Center Demo","item":"https://forthworthstudios.space/demo-portal.html"}]}
+</script>
 <link rel="preload" as="font" type="font/woff2" href="fonts/BigShouldersDisplay-900-normal-latin.woff2" crossorigin/>
 <link rel="preload" as="font" type="font/woff2" href="fonts/Barlow-400-normal-latin.woff2" crossorigin/>
 <link rel="stylesheet" href="style.css"/>
@@ -174,6 +187,62 @@
   .dp-side-h{display:none;}
 }
 @media(prefers-reduced-motion:reduce){ .dp-fill{transition:none;} }
+
+/* ── site audit ── */
+.dp-score-head{display:flex;align-items:baseline;justify-content:space-between;
+  border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px;flex-wrap:wrap;gap:8px;}
+.dp-score-url{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.1em;color:var(--quiet);
+  overflow-wrap:anywhere;}
+.dp-score-big{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:2.4rem;line-height:1;}
+.dp-score-big span{font-size:1rem;color:var(--quiet);}
+.dp-cat{background:#0a0a10;border:1px solid var(--line);padding:16px 18px;margin-bottom:10px;}
+.dp-cat-top{display:flex;align-items:center;justify-content:space-between;}
+.dp-cat-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;
+  letter-spacing:.03em;text-transform:uppercase;color:var(--white);}
+.dp-cat-score{font-family:'DM Mono',monospace;font-size:.95rem;}
+.dp-cat ul{margin-top:10px;padding-left:0;list-style:none;}
+.dp-cat li{font-family:'Barlow',sans-serif;font-weight:300;font-size:.87rem;color:var(--muted);
+  line-height:1.65;padding-left:14px;position:relative;}
+.dp-cat li::before{content:'—';position:absolute;left:0;color:var(--dim);}
+.good{color:#8fdd97;} .warn{color:#e8c46a;} .bad{color:#e8746a;}
+
+/* ── project status (client-side view) ── */
+.dp-status{background:#0a0a10;border:1px solid var(--line);padding:22px;}
+.dp-status-top{display:flex;align-items:center;justify-content:space-between;}
+.dp-live{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);
+  box-shadow:0 0 0 0 rgba(204,42,30,.55);animation:dpDot 2.2s ease-in-out infinite;}
+@keyframes dpDot{0%,100%{box-shadow:0 0 0 0 rgba(204,42,30,.55);opacity:1;}50%{box-shadow:0 0 0 5px rgba(204,42,30,0);opacity:.55;}}
+.dp-status-val{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:1.5rem;
+  text-transform:uppercase;margin-top:2px;}
+.dp-kv{display:flex;justify-content:space-between;font-family:'Barlow',sans-serif;font-size:.88rem;
+  color:var(--muted);border-top:1px solid var(--line);padding-top:10px;margin-top:14px;}
+.dp-kv b{color:var(--white);font-weight:400;}
+.dp-report{background:#0a0a10;border:1px solid var(--line);padding:14px 16px;margin-top:10px;}
+.dp-report time{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--quiet);}
+.dp-report p{font-family:'Barlow',sans-serif;font-weight:300;font-size:.88rem;color:var(--muted);margin-top:6px;}
+.dp-invoice{display:flex;align-items:center;justify-content:space-between;background:#0a0a10;
+  border:1px solid var(--line);padding:16px 18px;margin-top:8px;}
+.dp-invoice b{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:1.3rem;}
+
+/* ── ops board ── */
+.dp-team{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2px;
+  background:var(--line);border:1px solid var(--line);margin-bottom:26px;}
+.dp-member{background:#0a0a10;padding:16px 18px;}
+.dp-member b{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;color:var(--white);display:block;}
+.dp-member span{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--quiet);}
+.dp-member .stat{display:flex;justify-content:space-between;margin-top:10px;font-family:'DM Mono',monospace;
+  font-size:.68rem;color:var(--muted);}
+.dp-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+.dp-col-h{font-family:'DM Mono',monospace;font-size:var(--label-sm);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--quiet);margin-bottom:10px;}
+.dp-task{background:#0a0a10;border:1px solid var(--line);padding:13px 14px;margin-bottom:10px;
+  cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit;
+  transition:border-color var(--t1) var(--e),transform var(--t1) var(--e);}
+.dp-task:hover{border-color:var(--white);transform:translateX(2px);}
+.dp-task-title{font-family:'Barlow',sans-serif;font-weight:400;font-size:.87rem;color:var(--white);line-height:1.4;}
+.dp-task-meta{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.06em;color:var(--quiet);
+  margin-top:8px;display:flex;justify-content:space-between;}
 </style>
 </head>
 <body>
@@ -204,24 +273,28 @@
 <main id="main" class="wrap">
   <section id="dp-hero">
     <div class="eyebrow">Live Demo</div>
-    <h1 class="s-title">The Back <span class="red">Office.</span></h1>
-    <p class="lead">A working demo of the client portal we build — a mailing list you own, a visual email
-      builder, batched sending that survives a daily cap, and an editor for the words on your live site.
+    <h1 class="s-title">Command <span class="red">Center.</span></h1>
+    <p class="lead">A working demo of how we run client work end to end — the back office (a mailing
+      list you own, a visual email builder, an in-browser content editor), a free site audit, what a
+      client sees mid-project, and the ops board that tracks every task and every intern.
       Click anything. It all works.</p>
 
     <div class="dp-bar">
-      <span class="dp-bar-t">Demo · <b>sample data</b> · nothing is sent, nothing is saved</span>
+      <span class="dp-bar-t">Demo · <b>sample &amp; simulated data</b> · nothing is sent, nothing is saved</span>
       <button class="dp-reset" id="dpReset">↺ Reset demo</button>
     </div>
 
     <div class="dp-shell">
       <div class="dp-side">
-        <div class="dp-side-h">Portal</div>
-        <div class="dp-nav" role="tablist" aria-label="Portal sections">
+        <div class="dp-side-h">Command Center</div>
+        <div class="dp-nav" role="tablist" aria-label="Command Center sections">
           <button role="tab" aria-selected="true"  data-v="overview">Overview</button>
           <button role="tab" aria-selected="false" data-v="send">Send Email</button>
           <button role="tab" aria-selected="false" data-v="content">Content <span class="dp-pill" id="pillEdits">0</span></button>
           <button role="tab" aria-selected="false" data-v="history">History</button>
+          <button role="tab" aria-selected="false" data-v="audit">Site Audit</button>
+          <button role="tab" aria-selected="false" data-v="project">Project Status</button>
+          <button role="tab" aria-selected="false" data-v="ops">Ops Board</button>
         </div>
       </div>
 
@@ -316,16 +389,66 @@
             next morning, so a long list never fails — it just takes two days.</p>
         </div>
 
+        <!-- ── SITE AUDIT ── -->
+        <div class="dp-view" id="v-audit">
+          <div class="dp-row">
+            <input class="dp-in" id="aUrl" placeholder="yourbrand.com" value="yourbrand.com" style="width:auto;flex:1;"/>
+            <button class="dp-btn" id="aRun" style="width:auto;">Run Audit →</button>
+          </div>
+          <div id="aResult"></div>
+          <p class="dp-note">Scoring here is simulated — deterministic per URL, not a live scan (a real one
+            needs a server, which this page deliberately doesn't have). We run the real version before every
+            rebuild pitch.</p>
+        </div>
+
+        <!-- ── PROJECT STATUS ── -->
+        <div class="dp-view" id="v-project">
+          <div class="dp-status">
+            <div class="dp-status-top">
+              <div>
+                <div class="dp-lab" style="margin:0;">Tropika Living — Homepage Rebuild</div>
+                <div class="dp-status-val" id="pStatus">In Review</div>
+              </div>
+              <span class="dp-live" aria-hidden="true"></span>
+            </div>
+            <div class="dp-track"><div class="dp-fill" id="pFill" style="width:72%;"></div></div>
+            <div class="dp-kv"><span>Progress</span><b id="pPct">72%</b></div>
+            <div class="dp-kv"><span>Next milestone</span><b id="pMilestone">Hero video final pass</b></div>
+            <div class="dp-kv"><span>Due</span><b>22 Aug 2026</b></div>
+            <div class="dp-row" style="margin-top:16px;">
+              <button class="dp-btn ghost" id="pApprove">Approve current milestone</button>
+            </div>
+          </div>
+
+          <div class="dp-sub-h">Weekly reports</div>
+          <div id="pReports"></div>
+
+          <div class="dp-sub-h">Invoice</div>
+          <div class="dp-invoice">
+            <div><div class="dp-lab" style="margin:0;">FWS-INV-014</div><b>$1,850 USD</b></div>
+            <span class="dp-tag ok">PAID</span>
+          </div>
+        </div>
+
+        <!-- ── OPS BOARD ── -->
+        <div class="dp-view" id="v-ops">
+          <div class="dp-team" id="ccTeam"></div>
+          <div class="dp-cols" id="ccBoard"></div>
+          <p class="dp-note">Click a task to move it to the next stage. The real board lives in Mission
+            Control, gated to the team.</p>
+        </div>
+
       </div>
     </div>
 
     <div class="post-cta" style="margin-top:40px;">
       <b>This is a real system, rebuilt as a demo</b>
-      <p>We built the original for Chanakya FIC — a student finance society at Delhi University who needed a
-        mailing list they owned and a site their committee could edit. This page is a restyled, offline
-        replica of that back office: same ideas, sample data, no connection to anything.</p>
+      <p>The back office was built for Chanakya FIC — a student finance society at Delhi University who
+        needed a mailing list they owned and a site their committee could edit. The Site Audit, Project
+        Status and Ops Board tabs are a restyled, offline replica of the internal platform we run our own
+        studio on. Same ideas throughout, sample data, no connection to anything.</p>
       <a href="case-chanakya.html" class="btn btn-red">Read the case study →</a>
-      <a href="services.html" class="btn btn-ghost" style="margin-left:10px;">Client portals from ₹22,500</a>
+      <a href="services.html" class="btn btn-ghost" style="margin-left:10px;">Internal tools from ₹11,000</a>
     </div>
   </section>
 </main>
@@ -457,7 +580,10 @@
     overview: ['Overview', 'How the site is doing.'],
     send:     ['Send Email', 'Compose and send to the list.'],
     content:  ['Content', 'The words on the live website.'],
-    history:  ['Email History', 'What has gone out, and how it went.']
+    history:  ['Email History', 'What has gone out, and how it went.'],
+    audit:    ['Site Audit', 'Score any URL against the fundamentals.'],
+    project:  ['Project Status', 'What a Forth Worth client sees mid-project.'],
+    ops:      ['Ops Board', 'Every task, every client, every intern.']
   };
   document.querySelectorAll('.dp-nav button').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -698,10 +824,180 @@
     }).join('');
   }
 
+  /* ══════════════════════════════════════════════════════════════════════
+     SITE AUDIT — deterministic PRNG seeded from the URL string. No fetch,
+     no Math.random: the same URL always "scans" the same way.
+     ══════════════════════════════════════════════════════════════════════ */
+  function hash(str) {
+    var h = 2166136261;
+    for (var i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = (h * 16777619) >>> 0;
+    }
+    return h;
+  }
+  function mulberry32(seed) {
+    return function () {
+      seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  var NOTE_POOL = {
+    performance: {
+      good: ['Fast first response, lean initial payload.', 'Images are compressed and modern-format.'],
+      warn: ['First response is on the slow side of felt (>800ms).', 'A few render-blocking scripts in the head.'],
+      bad:  ['Initial HTML payload is heavier than it needs to be.', 'No caching headers on static assets.']
+    },
+    seo: {
+      good: ['Title, meta description and heading structure all present.', 'Clean, descriptive URL structure.'],
+      warn: ['Title is longer than the ~60 characters search engines show.', 'Meta description reads generically.'],
+      bad:  ['No meta description found.', 'Multiple or missing <h1> — heading hierarchy is unclear.']
+    },
+    design: {
+      good: ['Viewport meta present, layout adapts cleanly to mobile.', 'Consistent type scale and spacing rhythm.'],
+      warn: ['Some images are missing descriptive alt text.', 'Contrast is borderline on secondary text.'],
+      bad:  ['No favicon declared.', 'Interactive elements don’t show a clear hover/focus state.']
+    }
+  };
+  var CATS = [
+    { key: 'performance', label: 'Performance' },
+    { key: 'seo', label: 'SEO' },
+    { key: 'design', label: 'Design & Accessibility' }
+  ];
+  function scoreClass(n) { return n >= 80 ? 'good' : n >= 55 ? 'warn' : 'bad'; }
+
+  function runAudit(rawUrl) {
+    var url = rawUrl.trim().replace(/^https?:\/\//i, '');
+    if (!url) return;
+    var rnd = mulberry32(hash(url.toLowerCase()));
+    var cats = CATS.map(function (c) {
+      var score = 45 + Math.floor(rnd() * 55);
+      var tier = scoreClass(score);
+      var pool = NOTE_POOL[c.key][tier].concat(NOTE_POOL[c.key][tier === 'bad' ? 'warn' : 'good']);
+      var n1 = pool[Math.floor(rnd() * pool.length)];
+      var n2 = pool[Math.floor(rnd() * pool.length)];
+      var notes = n1 === n2 ? [n1] : [n1, n2];
+      return { label: c.label, score: score, tier: tier, notes: notes };
+    });
+    var overall = Math.round(cats.reduce(function (s, c) { return s + c.score; }, 0) / cats.length);
+    var html = '<div class="dp-score-head"><span class="dp-score-url">' + esc(url) + '</span>' +
+      '<span class="dp-score-big ' + scoreClass(overall) + '">' + overall + '<span>/100</span></span></div>';
+    cats.forEach(function (c) {
+      html += '<div class="dp-cat"><div class="dp-cat-top"><span class="dp-cat-name">' + esc(c.label) +
+        '</span><span class="dp-cat-score ' + c.tier + '">' + c.score + '</span></div><ul>' +
+        c.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul></div>';
+    });
+    $('aResult').innerHTML = html;
+  }
+  $('aRun').addEventListener('click', function () { runAudit($('aUrl').value); });
+  $('aUrl').addEventListener('keydown', function (e) { if (e.key === 'Enter') runAudit($('aUrl').value); });
+
+  /* ── project status ── */
+  var REPORTS_SEED = [
+    ['Aug 4 – Aug 10', 'Hero video draft delivered, homepage grid built.'],
+    ['Aug 11 – Aug 17', 'Client feedback round 1 incorporated, mobile pass started.']
+  ];
+  var PORTAL_STAGES = [
+    { status: 'In Review', pct: 72, milestone: 'Hero video final pass' },
+    { status: 'Awaiting sign-off', pct: 88, milestone: 'Final QA pass' },
+    { status: 'Complete', pct: 100, milestone: 'Handover' }
+  ];
+  var portalStage;
+  function renderReports() {
+    $('pReports').innerHTML = REPORTS_SEED.map(function (r) {
+      return '<div class="dp-report"><time>' + esc(r[0]) + '</time><p>' + esc(r[1]) + '</p></div>';
+    }).join('');
+  }
+  function renderPortal() {
+    var s = PORTAL_STAGES[portalStage];
+    $('pStatus').textContent = s.status;
+    $('pFill').style.width = s.pct + '%';
+    $('pPct').textContent = s.pct + '%';
+    $('pMilestone').textContent = s.milestone;
+    $('pApprove').disabled = portalStage >= PORTAL_STAGES.length - 1;
+    $('pApprove').textContent = portalStage >= PORTAL_STAGES.length - 1
+      ? 'Project complete' : 'Approve current milestone';
+  }
+  $('pApprove').addEventListener('click', function () {
+    if (portalStage >= PORTAL_STAGES.length - 1) return;
+    portalStage++;
+    renderPortal();
+    if (portalStage === 1) {
+      REPORTS_SEED.unshift(['Aug 18 – Aug 24', 'Milestone approved by client — moving to final QA.']);
+      renderReports();
+    }
+    toast('Milestone approved — moved to ' + PORTAL_STAGES[portalStage].status);
+  });
+
+  /* ── ops board ── */
+  var TEAM = [
+    { name: 'Khushi', role: 'Design Intern', xp: 1240, streak: 6 },
+    { name: 'Sheransh', role: 'Dev Intern', xp: 980, streak: 3 },
+    { name: 'Chahak', role: 'Motion Intern', xp: 1510, streak: 9 }
+  ];
+  var COLUMNS = ['Backlog', 'In Progress', 'Review', 'Done'];
+  var TASKS_SEED = [
+    { id: 't1', title: 'Tropika hero video — color grade', client: 'Tropika Living', who: 'Khushi', col: 1 },
+    { id: 't2', title: 'Host Culture — concept 3 revisions', client: 'Host Culture', who: 'Sheransh', col: 2 },
+    { id: 't3', title: 'GRAY lookbook — typeset pass', client: 'GRAY', who: 'Chahak', col: 0 },
+    { id: 't4', title: 'Chanakya hub — data viz components', client: 'Chanakya FIC', who: 'Khushi', col: 1 },
+    { id: 't5', title: 'Kinetic — storefront template QA', client: 'Kinetic', who: 'Sheransh', col: 3 },
+    { id: 't6', title: 'Tropika — mobile nav polish', client: 'Tropika Living', who: 'Chahak', col: 0 }
+  ];
+  var tasks;
+  function renderTeam() {
+    $('ccTeam').innerHTML = TEAM.map(function (m) {
+      return '<div class="dp-member"><b>' + esc(m.name) + '</b><span>' + esc(m.role) + '</span>' +
+        '<div class="stat"><span>' + m.xp + ' XP</span><span>🔥 ' + m.streak + 'd streak</span></div></div>';
+    }).join('');
+  }
+  function renderBoard() {
+    var host = $('ccBoard');
+    host.innerHTML = '';
+    COLUMNS.forEach(function (col, ci) {
+      var group = tasks.filter(function (t) { return t.col === ci; });
+      var d = document.createElement('div');
+      d.innerHTML = '<div class="dp-col-h">' + col.toUpperCase() + ' · ' + group.length + '</div>';
+      group.forEach(function (t) {
+        var btn = document.createElement('button');
+        btn.className = 'dp-task';
+        btn.dataset.id = t.id;
+        btn.innerHTML = '<div class="dp-task-title">' + esc(t.title) + '</div>' +
+          '<div class="dp-task-meta"><span>' + esc(t.client) + '</span><span>' + esc(t.who) + '</span></div>';
+        d.appendChild(btn);
+      });
+      host.appendChild(d);
+    });
+  }
+  $('ccBoard').addEventListener('click', function (e) {
+    var btn = e.target.closest('.dp-task'); if (!btn) return;
+    var task = tasks.find(function (t) { return t.id === btn.dataset.id; });
+    if (!task) return;
+    task.col = (task.col + 1) % COLUMNS.length;
+    renderBoard();
+    toast(task.title.split(' — ')[0] + ' → ' + COLUMNS[task.col]);
+  });
+  function resetCommandCenter() {
+    $('aUrl').value = 'yourbrand.com';
+    $('aResult').innerHTML = '';
+    portalStage = 0;
+    REPORTS_SEED.length = 0;
+    REPORTS_SEED.push(['Aug 4 – Aug 10', 'Hero video draft delivered, homepage grid built.']);
+    REPORTS_SEED.push(['Aug 11 – Aug 17', 'Client feedback round 1 incorporated, mobile pass started.']);
+    renderReports();
+    renderPortal();
+    tasks = TASKS_SEED.map(function (t) { return { id: t.id, title: t.title, client: t.client, who: t.who, col: t.col }; });
+    renderTeam();
+    renderBoard();
+  }
+
   function renderAll() {
     renderBlocks(); renderFields(); renderHistory(); renderFeed();
     $('sendBox').innerHTML = '';
     $('bSend').disabled = false;
+    resetCommandCenter();
   }
 
   $('dpReset').addEventListener('click', function () {
